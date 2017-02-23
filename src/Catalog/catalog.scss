@@ -8,17 +8,27 @@
   }
 
   .catalog-item-container {
+    cursor: pointer;
     text-align: left;
     float: left;
     display: inline-block;
     margin-left: calc((100% - 1000px) / 4);
+
+    div {
+      margin-top: -.3em;
+      height: 35px;
+      line-height: 35px;
+      background-color: white;
+      padding: 0 10px 0 10px;
+      font-weight: bold;
+
+      span {
+        display: inline-block;
+      }
+    }
   }
 
   :nth-child(4n - 3).catalog-item-container  {
     margin-left: calc((100% - 1000px) / 8);
-  }
-
-  span {
-    display: inline-block;
   }
 }

@@ -6,6 +6,7 @@ import { createStore, combineReducers } from 'redux';
 
 import Layout from './LayoutComponent.jsx';
 import Catalog from './Catalog/CatalogComponent.jsx';
+import ProductDetail from './ProductDetail/ProductDetailComponent.jsx';
 
 require("font-awesome-sass-loader");
 require('./main.scss');
@@ -70,6 +71,7 @@ ReactDOM.render(
       <Route path="/" component={Layout}>
         <IndexRoute component={Catalog} />
         <Route path="catalog" component={Catalog} />
+        <Route path="detail/:productId" component={ProductDetail} />
       </Route>
     </Router>
   </Provider>,
