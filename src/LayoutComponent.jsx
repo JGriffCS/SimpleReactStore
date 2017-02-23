@@ -1,12 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import Header from './Header/HeaderComponent.jsx';
 
 class Layout extends React.Component {
   render() {
     return (
       <div>
-        <div className="header-container">
-          I'll be replaced with a header component!!!
-        </div>
+        <Header />
         <div className="content-container">
           {this.props.children}
         </div>
@@ -15,4 +16,4 @@ class Layout extends React.Component {
   }
 }
 
-export default Layout;
+export default connect(null)(Layout);

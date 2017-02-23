@@ -1,13 +1,26 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import CatalogItem from './CatalogItemComponent.jsx';
 
 class Catalog extends React.Component {
   render() {
     return (
-      <div>
-        I want to be content when I grow up!
+      <div className="catalog-container">
+        {this.props.products.map((product, idx) => {
+          return (
+            <CatalogItem key={idx} product={product} />
+          );
+        })}
       </div>
     );
   }
 }
 
-export default Catalog;
+function mapStateToProps(state) {
+  return {
+    products: state.products,
+  };
+}
+
+export default connect(mapStateToProps)(Catalog);
