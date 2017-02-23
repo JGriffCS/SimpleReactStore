@@ -1,9 +1,9 @@
 import React from 'react';
-import { browserHistory } from 'react-router';
+import { hashHistory } from 'react-router';
 
 class CatalogItem extends React.Component {
   goToDetail() {
-    browserHistory.push(`/detail/${this.props.product.id}`);
+    hashHistory.push(`/detail/${this.props.product.id}`);
   }
 
   render() {

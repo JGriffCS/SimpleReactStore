@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route, IndexRedirect, hashHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 
@@ -67,11 +67,11 @@ const store = createStore((state = []) => state, initialState);
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={browserHistory}>
+    <Router history={hashHistory}>
       <Route path="/" component={Layout}>
-        <IndexRoute component={Catalog} />
-        <Route path="catalog" component={Catalog} />
-        <Route path="detail/:productId" component={ProductDetail} />
+        <IndexRedirect to="/catalog" />
+        <Route path="/catalog" component={Catalog} />
+        <Route path="/detail/:productId" component={ProductDetail} />
       </Route>
     </Router>
   </Provider>,
