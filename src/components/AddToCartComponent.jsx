@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addProductToCart } from '../actions/cart.js';
+import { addProductToCart } from '../actions/cart';
 
 class AddToCart extends React.Component {
   generateQuantityOptions() {
@@ -41,4 +41,4 @@ class AddToCart extends React.Component {
   }
 }
 
-export default connect(state => state, dispatch => bindActionCreators({ addProductToCart }, dispatch))(AddToCart);
+export default connect(null, dispatch => bindActionCreators({ addProductToCart }, dispatch))(AddToCart);

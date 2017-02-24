@@ -1,25 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import AddToCart from '../components/AddToCartComponent.jsx';
+import AddToCart from '../components/AddToCartComponent';
+import BackButton from '../components/BackButtonComponent';
 
 class ProductDetail extends React.Component {
   render() {
-    console.log(this.props);
     return (
       <div className="product-detail-container">
-        <div>
-          <img src={this.props.product.imageUrl} />
-        </div>
-        <div className="product-info">
+        <BackButton />
+        <div className="details">
           <div>
-            <h1>{this.props.product.name}</h1>
+            <img src={this.props.product.imageUrl} />
           </div>
-          <div>
-            <p>{this.props.product.description}</p>
-          </div>
-          <div>
-            <AddToCart {...this.props} />
+          <div className="product-info">
+            <div>
+              <h1>{this.props.product.name}</h1>
+            </div>
+            <div>
+              <p>{this.props.product.description}</p>
+            </div>
+            <div>
+              <AddToCart {...this.props} />
+            </div>
           </div>
         </div>
       </div>

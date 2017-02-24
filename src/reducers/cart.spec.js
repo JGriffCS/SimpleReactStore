@@ -1,16 +1,37 @@
 import { cart } from './cart';
-import { ADD_PRODUCT_TO_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY, REMOVE_PRODUCT_FROM_CART } from '../constants/ActionTypes';
+import { TOGGLE_CART_VISIBILITY, ADD_PRODUCT_TO_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY, REMOVE_PRODUCT_FROM_CART } from '../constants/ActionTypes';
 
 describe('cart reducer', () => {
   it('should return the initial state', () => {
     expect(
       cart(undefined, {})
-    ).toEqual([])
+    ).toEqual({ visible: false, items: [], })
+  })
+
+  it('should handle TOGGLE_CART_VISIBILITY', () => {
+    expect(
+      cart({ visible: false, items: [], }, {
+        type: TOGGLE_CART_VISIBILITY,
+      })
+    ).toEqual({ visible: true, items: [], })
+
+    expect(
+      cart({ visible: true, items: [], }, {
+        type: TOGGLE_CART_VISIBILITY,
+      })
+    ).toEqual({ visible: false, items: [], })
+
+    expect(
+      cart({ visible: false, items: [], }, {
+        type: TOGGLE_CART_VISIBILITY,
+        visibility: false,
+      })
+    ).toEqual({ visible: false, items: [], })
   })
 
   it('should handle ADD_PRODUCT_TO_CART', () => {
     expect(
-      cart([], {
+      cart({ visible: false, items: []}, {
         type: ADD_PRODUCT_TO_CART,
         product: {
           productId: 1,
@@ -20,16 +41,9 @@ describe('cart reducer', () => {
           quantity: 1,
         },
       })
-    ).toEqual([{
-      productId: 1,
-      name: 'Product 1',
-      price: 10.50,
-      thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
-      quantity: 1,
-    }])
-
-    expect(
-      cart([
+    ).toEqual({
+      visible: false,
+      items: [
         {
           productId: 1,
           name: 'Product 1',
@@ -37,7 +51,19 @@ describe('cart reducer', () => {
           thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
           quantity: 1,
         }
-      ], {
+      ]
+    })
+
+    expect(
+      cart({ visible: false, items: [
+        {
+          productId: 1,
+          name: 'Product 1',
+          price: 10.50,
+          thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
+          quantity: 1,
+        }
+      ]}, {
         type: ADD_PRODUCT_TO_CART,
         product: {
           productId: 3,
@@ -47,7 +73,7 @@ describe('cart reducer', () => {
           quantity: 3,
         },
       })
-    ).toEqual([
+    ).toEqual({ visible: false, items: [
       {
         productId: 1,
         name: 'Product 1',
@@ -62,10 +88,10 @@ describe('cart reducer', () => {
         thumbnailUrl: 'http://placehold.it/50/c66101/ffffff',
         quantity: 3,
       }
-    ])
+    ]})
 
     expect(
-      cart([
+      cart({ visible: false, items: [
         {
           productId: 1,
           name: 'Product 1',
@@ -73,7 +99,7 @@ describe('cart reducer', () => {
           thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
           quantity: 1,
         }
-      ], {
+      ]}, {
         type: ADD_PRODUCT_TO_CART,
         product: {
           productId: 1,
@@ -83,7 +109,7 @@ describe('cart reducer', () => {
           quantity: 4,
         },
       })
-    ).toEqual([
+    ).toEqual({ visible: false, items: [
       {
         productId: 1,
         name: 'Product 1',
@@ -91,12 +117,12 @@ describe('cart reducer', () => {
         thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
         quantity: 5,
       },
-    ])
+    ]})
   })
 
   it('should handle INCREMENT_QUANITY', () => {
     expect(
-      cart([
+      cart({ visible: false, items: [
         {
           productId: 1,
           name: 'Product 1',
@@ -104,11 +130,11 @@ describe('cart reducer', () => {
           thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
           quantity: 1,
         }
-      ], {
+      ]}, {
         type: INCREMENT_QUANTITY,
         productId: 1,
       })
-    ).toEqual([
+    ).toEqual({ visible: false, items: [
       {
         productId: 1,
         name: 'Product 1',
@@ -116,12 +142,12 @@ describe('cart reducer', () => {
         thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
         quantity: 2,
       }
-    ])
+    ]})
   })
 
   it('should handle DECREMENT_QUANTITY', () => {
     expect(
-      cart([
+      cart({ visible: false, items: [
         {
           productId: 1,
           name: 'Product 1',
@@ -129,11 +155,11 @@ describe('cart reducer', () => {
           thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
           quantity: 3,
         }
-      ], {
+      ]}, {
         type: DECREMENT_QUANTITY,
         productId: 1,
       })
-    ).toEqual([
+    ).toEqual({ visible: false, items: [
       {
         productId: 1,
         name: 'Product 1',
@@ -141,11 +167,11 @@ describe('cart reducer', () => {
         thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
         quantity: 2,
       }
-    ])
+    ]})
   })
 
   expect(
-    cart([
+    cart({ visible: false, items: [
       {
         productId: 1,
         name: 'Product 1',
@@ -153,11 +179,11 @@ describe('cart reducer', () => {
         thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
         quantity: 1,
       }
-    ], {
+    ]}, {
       type: DECREMENT_QUANTITY,
       productId: 1,
     })
-  ).toEqual([
+  ).toEqual({ visible: false, items: [
     {
       productId: 1,
       name: 'Product 1',
@@ -165,11 +191,11 @@ describe('cart reducer', () => {
       thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
       quantity: 1,
     }
-  ])
+  ]})
 
   it('should handle REMOVE_PRODUCT_FROM_CART', () => {
     expect(
-      cart([
+      cart({ visible: false, items: [
         {
           productId: 1,
           name: 'Product 1',
@@ -184,11 +210,11 @@ describe('cart reducer', () => {
           thumbnailUrl: 'http://placehold.it/50/c66101/ffffff',
           quantity: 3,
         }
-      ], {
+      ]}, {
         type: REMOVE_PRODUCT_FROM_CART,
         productId: 3,
       })
-    ).toEqual([
+    ).toEqual({ visible: false, items: [
       {
         productId: 1,
         name: 'Product 1',
@@ -196,10 +222,10 @@ describe('cart reducer', () => {
         thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
         quantity: 1,
       },
-    ])
+    ]})
 
     expect(
-      cart([
+      cart({ visible: false, items: [
         {
           productId: 1,
           name: 'Product 1',
@@ -207,11 +233,11 @@ describe('cart reducer', () => {
           thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
           quantity: 1,
         },
-      ], {
+      ]}, {
         type: REMOVE_PRODUCT_FROM_CART,
         productId: 3,
       })
-    ).toEqual([
+    ).toEqual({ visible: false, items: [
       {
         productId: 1,
         name: 'Product 1',
@@ -219,6 +245,6 @@ describe('cart reducer', () => {
         thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
         quantity: 1,
       },
-    ])
+    ]})
   })
 })

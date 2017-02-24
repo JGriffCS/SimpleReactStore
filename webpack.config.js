@@ -11,6 +11,9 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/dist',
   },
+  resolve: {
+    extensions: ['.webpack.js', '.web.js', '.js', '.json', '.jsx'],
+  },
   module: {
     loaders: [
       {

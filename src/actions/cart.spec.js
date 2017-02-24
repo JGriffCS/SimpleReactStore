@@ -1,7 +1,15 @@
-import { ADD_PRODUCT_TO_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY, REMOVE_PRODUCT_FROM_CART } from '../constants/ActionTypes';
-import { addProductToCart, incrementQuantity, decrementQuantity, removeProductFromCart } from './cart';
+import { TOGGLE_CART_VISIBILITY, ADD_PRODUCT_TO_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY, REMOVE_PRODUCT_FROM_CART } from '../constants/ActionTypes';
+import { toggleCartVisibility, addProductToCart, incrementQuantity, decrementQuantity, removeProductFromCart } from './cart';
 
 describe('cart actions', () => {
+  it('should create an action to toggle visibility of the cart', () => {
+    const expectedAction = {
+      type: TOGGLE_CART_VISIBILITY,
+    };
+
+    expect(toggleCartVisibility()).toEqual(expectedAction);
+  })
+
   it('should create an action to add a product to the cart', () => {
     const product = {
       productId: 1,

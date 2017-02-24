@@ -1,4 +1,11 @@
-import { ADD_PRODUCT_TO_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY, REMOVE_PRODUCT_FROM_CART } from '../constants/ActionTypes.js';
+import { TOGGLE_CART_VISIBILITY, ADD_PRODUCT_TO_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY, REMOVE_PRODUCT_FROM_CART } from '../constants/ActionTypes';
+
+export function toggleCartVisibility(visibility) {
+  return {
+    type: TOGGLE_CART_VISIBILITY,
+    visibility,
+  };
+}
 
 export function addProductToCart(product) {
   return {

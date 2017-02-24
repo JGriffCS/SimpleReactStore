@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Cart from '../components/CartComponent.jsx';
+import Cart from '../components/CartComponent';
 
 class Header extends React.Component {
   render() {
     return (
       <div className="header-container">
-        <div className="pull-right">
+        <div className="pull-right cart-component-container">
           <Cart />
         </div>
       </div>
