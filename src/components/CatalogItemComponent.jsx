@@ -9,8 +9,8 @@ class CatalogItem extends React.Component {
   render() {
     return (
       <div className="catalog-item-container" onClick={this.goToDetail.bind(this)}>
-        <img src={this.props.product.smallImageUrl} />
-        <div>
+        <div className="image-container"><img src={this.props.product.smallImageUrl} className="catalog-item-image" /></div>
+        <div className="product-label">
           <span>{this.props.product.name}</span>
           <span className="pull-right">${this.props.product.price.toFixed(2)}</span>
         </div>

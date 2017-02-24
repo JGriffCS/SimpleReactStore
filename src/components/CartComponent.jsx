@@ -14,14 +14,22 @@ class Cart extends React.Component {
   getCartContent() {
     const { cart } = this.props;
 
-    if (cart.length === 0) {
-      return <div>THERE'S NO ITEMS!!!</div>;
+    if (cart.items.length === 0) {
+      return (
+        <div className="empty-cart">
+          <strong>Your cart is empty!</strong>
+          <div>Why not find something you like?</div>
+        </div>
+      );
     }
 
     const cartItems = [];
 
     for (let i = 0; i < cart.items.length; i++) {
-      cartItems.push(<CartItem product={cart[i]} />)
+      cartItems.push(<CartItem key={cart.items[i].productId} product={cart.items[i]} />)
+      if (i < cart.items.length - 1) {
+        cartItems.push(<hr />);
+      }
     }
 
     return cartItems;

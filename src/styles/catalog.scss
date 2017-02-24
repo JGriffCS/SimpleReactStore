@@ -14,8 +14,16 @@
     display: inline-block;
     margin-left: calc((100% - 1000px) / 4);
 
-    div {
-      margin-top: -.3em;
+    .image-container {
+      background-color: #fff;
+
+      img:hover {
+        opacity: .6;
+      }
+    }
+
+    .product-label {
+      margin-top: -1.35em;
       height: 35px;
       line-height: 35px;
       background-color: white;
