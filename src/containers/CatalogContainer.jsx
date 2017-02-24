@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import CatalogItem from './CatalogItemComponent.jsx';
+import CatalogItem from '../components/CatalogItemComponent.jsx';
 
 class Catalog extends React.Component {
   render() {

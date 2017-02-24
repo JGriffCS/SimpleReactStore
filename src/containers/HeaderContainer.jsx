@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Cart from '../Cart/CartComponent.jsx';
+import Cart from '../components/CartComponent.jsx';
 
 class Header extends React.Component {
   render() {

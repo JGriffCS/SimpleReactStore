@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Header from './Header/HeaderComponent.jsx';
+import Header from './HeaderContainer.jsx';
 
 class Layout extends React.Component {
   render() {

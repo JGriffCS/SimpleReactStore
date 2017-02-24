@@ -4,15 +4,14 @@ import { Router, Route, IndexRedirect, hashHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 
-import Layout from './LayoutComponent.jsx';
-import Catalog from './Catalog/CatalogComponent.jsx';
-import ProductDetail from './ProductDetail/ProductDetailComponent.jsx';
+import Layout from './containers/LayoutContainer.jsx';
+import Catalog from './containers/CatalogContainer.jsx';
+import ProductDetail from './containers/ProductDetailContainer.jsx';
 
 require("font-awesome-sass-loader");
-require('./main.scss');
+require('./styles/main.scss');
 
-// TODO: Combine reducers once written
-//const reducers = combineReducers(Object.assign({}, CartReducer));
+import { cart } from './reducers/cart.js';
 
 // TODO: Fill with semi-realistic data; Move to external JSON file
 const initialState = {
@@ -25,7 +24,8 @@ const initialState = {
        anything you could ever desire to know about the product! It's truly
        a great product. Just ask anyone!`,
       price: 10.50,
-      thumbnailUrl: 'http://placehold.it/250/032c6d/ffffff',
+      thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
+      smallImageUrl: 'http://placehold.it/250/032c6d/ffffff',
       imageUrl: 'http://placehold.it/550/032c6d/ffffff',
     },
     {
@@ -36,7 +36,8 @@ const initialState = {
        anything you could ever desire to know about the product! It's truly
        a great product. Just ask anyone!`,
       price: 9.99,
-      thumbnailUrl: 'http://placehold.it/250/b50505/ffffff',
+      thumbnailUrl: 'http://placehold.it/50/b50505/ffffff',
+      smallImageUrl: 'http://placehold.it/250/b50505/ffffff',
       imageUrl: 'http://placehold.it/550/b50505/ffffff',
     },
     {
@@ -47,7 +48,8 @@ const initialState = {
        anything you could ever desire to know about the product! It's truly
        a great product. Just ask anyone!`,
       price: .99,
-      thumbnailUrl: 'http://placehold.it/250/c66101/ffffff',
+      thumbnailUrl: 'http://placehold.it/50/c66101/ffffff',
+      smallImageUrl: 'http://placehold.it/250/c66101/ffffff',
       imageUrl: 'http://placehold.it/550/c66101/ffffff',
     },
     {
@@ -58,7 +60,8 @@ const initialState = {
        anything you could ever desire to know about the product! It's truly
        a great product. Just ask anyone!`,
       price: 20.00,
-      thumbnailUrl: 'http://placehold.it/250/2bc601/ffffff',
+      thumbnailUrl: 'http://placehold.it/50/2bc601/ffffff',
+      smallImageUrl: 'http://placehold.it/250/2bc601/ffffff',
       imageUrl: 'http://placehold.it/550/2bc601/ffffff',
     },
     {
@@ -69,7 +72,8 @@ const initialState = {
        anything you could ever desire to know about the product! It's truly
        a great product. Just ask anyone!`,
       price: 49.99,
-      thumbnailUrl: 'http://placehold.it/250/01b8c6/ffffff',
+      thumbnailUrl: 'http://placehold.it/50/01b8c6/ffffff',
+      smallImageUrl: 'http://placehold.it/250/01b8c6/ffffff',
       imageUrl: 'http://placehold.it/550/01b8c6/ffffff',
     },
     {
@@ -80,14 +84,20 @@ const initialState = {
        anything you could ever desire to know about the product! It's truly
        a great product. Just ask anyone!`,
       price: 14.99,
-      thumbnailUrl: 'http://placehold.it/250/72015f/ffffff',
+      thumbnailUrl: 'http://placehold.it/50/72015f/ffffff',
+      smallImageUrl: 'http://placehold.it/250/72015f/ffffff',
       imageUrl: 'http://placehold.it/550/72015f/ffffff',
     },
   ],
   cart: [],
 };
+// TODO: Combine reducers once written
+const reducers = combineReducers({
+  cart,
+  products: (state = []) => state,
+});
 
-const store = createStore((state = []) => state, initialState);
+const store = createStore(reducers, initialState);
 
 ReactDOM.render(
   <Provider store={store}>

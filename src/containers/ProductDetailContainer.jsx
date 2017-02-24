@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import AddToCart from '../components/AddToCartComponent.jsx';
+
 class ProductDetail extends React.Component {
   render() {
     console.log(this.props);
@@ -13,6 +15,12 @@ class ProductDetail extends React.Component {
           <div>
             <h1>{this.props.product.name}</h1>
           </div>
+          <div>
+            <p>{this.props.product.description}</p>
+          </div>
+          <div>
+            <AddToCart {...this.props} />
+          </div>
         </div>
       </div>
     );
@@ -20,7 +28,6 @@ class ProductDetail extends React.Component {
 }
 
 function mapStateToProps(state, ownProps) {
-  console.log(ownProps);
   return {
     product: state.products.find((product) => {
       return product.id === parseInt(ownProps.params.productId, 10);
