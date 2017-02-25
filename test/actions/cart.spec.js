@@ -1,5 +1,5 @@
-import { TOGGLE_CART_VISIBILITY, ADD_PRODUCT_TO_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY, UPDATE_QUANTITY, REMOVE_PRODUCT_FROM_CART } from '../constants/ActionTypes';
-import { toggleCartVisibility, addProductToCart, incrementQuantity, decrementQuantity, updateQuantity, removeProductFromCart } from './cart';
+import { TOGGLE_CART_VISIBILITY, ADD_PRODUCT_TO_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY, UPDATE_QUANTITY, REMOVE_PRODUCT_FROM_CART } from '../../src/constants/ActionTypes';
+import { toggleCartVisibility, addProductToCart, incrementQuantity, decrementQuantity, updateQuantity, removeProductFromCart } from '../../src/actions/cart';
 
 describe('cart actions', () => {
   it('should create an action to toggle visibility of the cart', () => {

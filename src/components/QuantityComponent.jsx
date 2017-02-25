@@ -10,7 +10,7 @@ class Quantity extends React.Component {
   }
 
   updateQuantity() {
-    this.props.updateFn(parseInt(this._quantity.value,10));
+    this.props.updateFn(parseInt(this._quantity.value, 10));
   }
 
   render() {
@@ -18,9 +18,9 @@ class Quantity extends React.Component {
 
     return(
       <div className="cart-quantity-container">
-        <button onClick={this.decrement.bind(this)}>-</button>
-        <input ref={(el) => { this._quantity = el }} value={quantity} onChange={this.updateQuantity.bind(this)} />
-        <button onClick={this.increment.bind(this)}>+</button>
+        <button className="decrementBtn" onClick={this.decrement.bind(this)}>-</button>
+        <input className="quantityInput" ref={(el) => { this._quantity = el }} value={quantity} onChange={this.updateQuantity.bind(this)} />
+        <button className="incrementBtn" onClick={this.increment.bind(this)}>+</button>
       </div>
     )
   }
