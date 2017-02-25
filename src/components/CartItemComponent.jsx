@@ -1,8 +1,23 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { incrementQuantity, decrementQuantity, updateQuantity } from '../actions/cart';
 
-import CartQuantity from './CartQuantityComponent';
+import Quantity from './QuantityComponent';
 
 class CartItem extends React.Component {
+  incrementQuantity() {
+    this.props.incrementQuantity(this.props.product.productId);
+  }
+
+  decrementQuantity() {
+    this.props.decrementQuantity(this.props.product.productId);
+  }
+
+  updateQuantity(qty) {
+    this.props.updateQuantity(this.props.product.productId, qty);
+  }
+
   render() {
     const { product } = this.props;
 
@@ -20,7 +35,7 @@ class CartItem extends React.Component {
           </div>
           <div className="spacer15"></div>
           <div className="item-quantity">
-            <CartQuantity quantity={product.quantity} />
+            <Quantity incrementFn={this.incrementQuantity.bind(this)} decrementFn={this.decrementQuantity.bind(this)} updateFn={this.updateQuantity.bind(this)} quantity={product.quantity} />
           </div>
           <div className="item-price">
             <span className="pull-right">${parseFloat(product.price).toFixed(2)}</span>
@@ -31,4 +46,10 @@ class CartItem extends React.Component {
   }
 }
 
-export default CartItem;
+function mapStateToProps(state) {
+  return {
+    cart: state.cart,
+  };
+}
+
+export default connect(mapStateToProps, dispatch => bindActionCreators({ incrementQuantity, decrementQuantity, updateQuantity }, dispatch))(CartItem);

@@ -3,7 +3,40 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addProductToCart } from '../actions/cart';
 
+import Quantity from './QuantityComponent';
+
 class AddToCart extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+
+    this.state = {
+      quantity: 0,
+    };
+  }
+
+  incrementQuantity() {
+    this.setState({
+      quantity: this.state.quantity + 1,
+    });
+  }
+
+  decrementQuantity() {
+    debugger;
+    if (this.state.quantity > 1) {
+      this.setState({
+        quantity: this.state.quantity - 1,
+      });
+    }
+  }
+
+  updateQuantity(qty) {
+    if (qty > 0 && qty < 1000) {
+      this.setState({
+        quantity: qty,
+      });
+    }
+  }
+
   generateQuantityOptions() {
     const options = [];
 
@@ -21,7 +54,7 @@ class AddToCart extends React.Component {
       name: product.name,
       price: product.price,
       thumbnailUrl: product.thumbnailUrl,
-      quantity: parseInt(this._quantity.value, 10),
+      quantity: this.state.quantity,
     };
 
     this.props.addProductToCart(cartItem);
@@ -32,9 +65,10 @@ class AddToCart extends React.Component {
 
     return(
       <div>
-        <select ref={(el) => { this._quantity = el }}>
+        {/* <select ref={(el) => { this._quantity = el }}>
           {options}
-        </select>
+        </select> */}
+        <Quantity incrementFn={this.incrementQuantity.bind(this)} decrementFn={this.decrementQuantity.bind(this)} updateFn={this.updateQuantity.bind(this)} quantity={this.state.quantity} />
         <button onClick={this.addItemToCart.bind(this)}>Add to Cart</button>
       </div>
     );

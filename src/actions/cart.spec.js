@@ -1,5 +1,5 @@
-import { TOGGLE_CART_VISIBILITY, ADD_PRODUCT_TO_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY, REMOVE_PRODUCT_FROM_CART } from '../constants/ActionTypes';
-import { toggleCartVisibility, addProductToCart, incrementQuantity, decrementQuantity, removeProductFromCart } from './cart';
+import { TOGGLE_CART_VISIBILITY, ADD_PRODUCT_TO_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY, UPDATE_QUANTITY, REMOVE_PRODUCT_FROM_CART } from '../constants/ActionTypes';
+import { toggleCartVisibility, addProductToCart, incrementQuantity, decrementQuantity, updateQuantity, removeProductFromCart } from './cart';
 
 describe('cart actions', () => {
   it('should create an action to toggle visibility of the cart', () => {
@@ -47,6 +47,19 @@ describe('cart actions', () => {
     };
 
     expect(decrementQuantity(productId)).toEqual(expectedAction);
+  })
+
+  it('should create an action to update quantity', () => {
+    const productId = 3,
+          quantity = 2;
+
+    const expectedAction = {
+      type: UPDATE_QUANTITY,
+      productId,
+      quantity,
+    };
+
+    expect(updateQuantity(productId, quantity)).toEqual(expectedAction);
   })
 
   it('should create an action to remove a product from the cart', () => {

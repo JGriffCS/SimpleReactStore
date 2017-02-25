@@ -1,5 +1,5 @@
 import { cart } from './cart';
-import { TOGGLE_CART_VISIBILITY, ADD_PRODUCT_TO_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY, REMOVE_PRODUCT_FROM_CART } from '../constants/ActionTypes';
+import { TOGGLE_CART_VISIBILITY, ADD_PRODUCT_TO_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY, UPDATE_QUANTITY, REMOVE_PRODUCT_FROM_CART } from '../constants/ActionTypes';
 
 describe('cart reducer', () => {
   it('should return the initial state', () => {
@@ -168,10 +168,21 @@ describe('cart reducer', () => {
         quantity: 2,
       }
     ]})
-  })
 
-  expect(
-    cart({ visible: false, items: [
+    expect(
+      cart({ visible: false, items: [
+        {
+          productId: 1,
+          name: 'Product 1',
+          price: 10.50,
+          thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
+          quantity: 1,
+        }
+      ]}, {
+        type: DECREMENT_QUANTITY,
+        productId: 1,
+      })
+    ).toEqual({ visible: false, items: [
       {
         productId: 1,
         name: 'Product 1',
@@ -179,19 +190,84 @@ describe('cart reducer', () => {
         thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
         quantity: 1,
       }
-    ]}, {
-      type: DECREMENT_QUANTITY,
-      productId: 1,
-    })
-  ).toEqual({ visible: false, items: [
-    {
-      productId: 1,
-      name: 'Product 1',
-      price: 10.50,
-      thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
-      quantity: 1,
-    }
-  ]})
+    ]})
+  })
+
+
+
+  it('should handle UPDATE_QUANTITY', () => {
+    expect(
+      cart({ visible: false, items: [
+        {
+          productId: 1,
+          name: 'Product 1',
+          price: 10.50,
+          thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
+          quantity: 3,
+        }
+      ]}, {
+        type: UPDATE_QUANTITY,
+        productId: 1,
+        quantity: 22,
+      })
+    ).toEqual({ visible: false, items: [
+      {
+        productId: 1,
+        name: 'Product 1',
+        price: 10.50,
+        thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
+        quantity: 22,
+      }
+    ]})
+
+    expect(
+      cart({ visible: false, items: [
+        {
+          productId: 1,
+          name: 'Product 1',
+          price: 10.50,
+          thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
+          quantity: 5,
+        }
+      ]}, {
+        type: UPDATE_QUANTITY,
+        productId: 1,
+        quantity: 0,
+      })
+    ).toEqual({ visible: false, items: [
+      {
+        productId: 1,
+        name: 'Product 1',
+        price: 10.50,
+        thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
+        quantity: 5,
+      }
+    ]})
+
+    expect(
+      cart({ visible: false, items: [
+        {
+          productId: 1,
+          name: 'Product 1',
+          price: 10.50,
+          thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
+          quantity: 5,
+        }
+      ]}, {
+        type: UPDATE_QUANTITY,
+        productId: 1,
+        quantity: 1000,
+      })
+    ).toEqual({ visible: false, items: [
+      {
+        productId: 1,
+        name: 'Product 1',
+        price: 10.50,
+        thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
+        quantity: 5,
+      }
+    ]})
+  })
 
   it('should handle REMOVE_PRODUCT_FROM_CART', () => {
     expect(
