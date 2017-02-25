@@ -35,6 +35,10 @@ class Cart extends React.Component {
     return cartItems;
   }
 
+  getSubtotal() {
+    return this.props.cart.items.reduce((sum, item) => sum + (item.quantity * item.price), 0);
+  }
+
   render() {
     const { cart } = this.props;
     const quantity = this.props.cart.items.reduce((sum, item) => sum + item.quantity, 0);
@@ -51,8 +55,8 @@ class Cart extends React.Component {
             {cartContent}
           </div>
           {cart.items.length > 0 ? <div className="cart-footer">
-            Subtotal: $XXX.XX
-            <button>Go to Checkout</button>
+            <span className="pull-left">Subtotal: ${this.getSubtotal()}</span>
+            <span className="pull-right"><button>Go to Checkout</button></span>
           </div> : ''}
         </div>
       </div>

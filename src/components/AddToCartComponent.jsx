@@ -10,7 +10,7 @@ class AddToCart extends React.Component {
     super(props, context);
 
     this.state = {
-      quantity: 0,
+      quantity: 1,
     };
   }
 
