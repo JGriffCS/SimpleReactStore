@@ -47,7 +47,13 @@ class Cart extends React.Component {
           <strong className="fa-stack unselectable">{quantity}</strong>
         </div>
         <div className={`cart-container ${cart.visible === true ? 'open' : ''}`}>
-          {cartContent}
+          <div className="scrollable-cart">
+            {cartContent}
+          </div>
+          {cart.items.length > 0 ? <div className="cart-footer">
+            Subtotal: $XXX.XX
+            <button>Go to Checkout</button>
+          </div> : ''}
         </div>
       </div>
     );
