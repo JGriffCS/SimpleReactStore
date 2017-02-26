@@ -1,0 +1,111 @@
+.checkout-container {
+  height: 100%;
+  padding: 35px 25px 35px 25px;
+
+  .checkout-details {
+    height: 100%;
+  }
+
+  .cart-overview {
+    vertical-align: top;
+    display: inline-block;
+    background-color: white;
+    border-radius: 15px;
+    overflow-y: hidden;
+    max-height: 560px;
+    width: 35%;
+    padding: 15px;
+    box-sizing: border-box;
+
+    .title {
+      height: 50px;
+    }
+
+    .cart-content {
+      max-height: 430px;
+      overflow-y: auto;
+    }
+
+    .cart-content::-webkit-scrollbar {
+      width: 14px;
+      height: 18px;
+    }
+
+    .cart-content::-webkit-scrollbar-thumb {
+      height: 6px;
+      border: 4px solid rgba(0, 0, 0, 0);
+      background-clip: padding-box;
+      -webkit-border-radius: 7px;
+      background-color: rgba(0, 0, 0, 0.15);
+      -webkit-box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05), inset 1px 1px 0px rgba(0, 0, 0, 0.05);
+    }
+
+    .cart-content::-webkit-scrollbar-button {
+      width: 0;
+      height: 0;
+      display: none;
+    }
+
+    .cart-content::-webkit-scrollbar-corner {
+      background-color: transparent;
+    }
+  }
+
+  .checkout-spacer {
+    display: inline-block;
+    border-radius: 15px;
+    width: 10%;
+  }
+
+  .customer-info {
+    padding: 25px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    display: inline-block;
+    background-color: white;
+    width: 55%;
+    min-height: 560px;
+    max-height: 90%;
+    overflow-y: auto;
+
+    // input[type="text"] {
+    //   border-radius: 3px;
+    //   box-shadow: 0 1px 6px rgba(0,0,0,.15) inset, 0 1px 6px rgba(0, 0, 0, .15);
+    //   width: 100%;
+    //   height: 32px;
+    // }
+
+    .section {
+      margin-bottom: 20px;
+    }
+
+    .section-header {
+      font-size: 30px;
+      font-weight: bold;
+    }
+  }
+
+  .customer-info::-webkit-scrollbar {
+    width: 14px;
+    height: 18px;
+  }
+
+  .customer-info::-webkit-scrollbar-thumb {
+    height: 6px;
+    border: 4px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    -webkit-border-radius: 7px;
+    background-color: rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05), inset 1px 1px 0px rgba(0, 0, 0, 0.05);
+  }
+
+  .customer-info::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+
+  .customer-info::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
+}

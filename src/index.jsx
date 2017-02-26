@@ -7,6 +7,7 @@ import { createStore, combineReducers } from 'redux';
 import Layout from './containers/LayoutContainer';
 import Catalog from './containers/CatalogContainer';
 import ProductDetail from './containers/ProductDetailContainer';
+import Checkout from './containers/CheckoutContainer';
 
 require("font-awesome-sass-loader");
 require('./styles/main.scss');
@@ -110,6 +111,7 @@ ReactDOM.render(
         <IndexRedirect to="/catalog" />
         <Route path="/catalog" component={Catalog} />
         <Route path="/detail/:productId" component={ProductDetail} />
+        <Route path="/checkout" component={Checkout} />
       </Route>
     </Router>
   </Provider>,

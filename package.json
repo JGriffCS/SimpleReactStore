@@ -19,11 +19,13 @@
   },
   "homepage": "https://github.com/JGriffCS/Voyagin#readme",
   "dependencies": {
+    "bootstrap-sass": "^3.3.7",
     "font-awesome": "^4.7.0",
     "font-awesome-sass-loader": "^1.0.3",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-redux": "^5.0.2",
+    "react-redux": "^5.0.3",
+    "react-redux-form": "^1.7.0",
     "react-router": "^3.0.2",
     "redux": "^3.6.0"
   },

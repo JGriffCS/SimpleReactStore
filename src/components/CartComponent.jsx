@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { hashHistory } from 'react-router';
 import { bindActionCreators } from 'redux';
 
 import { toggleCartVisibility } from '../actions/cart';
@@ -9,6 +10,10 @@ import CartItem from './CartItemComponent';
 class Cart extends React.Component {
   toggleCart() {
     this.props.toggleCartVisibility();
+  }
+
+  goToCheckout() {
+    hashHistory.push('/checkout');
   }
 
   getCartContent() {
@@ -56,7 +61,7 @@ class Cart extends React.Component {
           </div>
           {cart.items.length > 0 ? <div className="cart-footer">
             <span className="pull-left">Subtotal: ${this.getSubtotal()}</span>
-            <span className="pull-right"><button>Go to Checkout</button></span>
+            <span className="pull-right"><button onClick={this.goToCheckout}>Go to Checkout</button></span>
           </div> : ''}
         </div>
       </div>
