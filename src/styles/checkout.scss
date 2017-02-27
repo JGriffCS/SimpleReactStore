@@ -108,4 +108,20 @@
   .customer-info::-webkit-scrollbar-corner {
     background-color: transparent;
   }
+
+  .completion-info {
+    padding: 65px;
+    h1 {
+      margin-bottom: 50px;
+    }
+
+    p {
+      font-size: 22px;
+      margin-bottom: 35px;
+    }
+
+    button {
+      margin-top: 10px;
+    }
+  }
 }

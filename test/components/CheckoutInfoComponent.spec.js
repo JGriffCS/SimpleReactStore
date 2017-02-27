@@ -91,7 +91,7 @@ describe('Checkout Info Component', function() {
     wrapper.find('.billing-address-toggle').simulate('click');
     wrapper.find('[type="submit"]').get(0).click();
     expect(submitCallback.calledOnce).toEqual(true);
-  })
+  });
 
   // TODO: Tests for specific validators
 });

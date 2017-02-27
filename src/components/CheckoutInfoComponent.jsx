@@ -48,8 +48,7 @@ class CheckoutInfo extends React.Component {
   }
 
   handleSubmit(values) {
-    // TODO: Order Complete screen
-    console.log('here');
+    this.props.onSuccess();
   }
 
   handleSubmitFailure(formState) {

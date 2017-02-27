@@ -4,8 +4,17 @@ import { connect } from 'react-redux';
 import BackButton from '../components/BackButtonComponent';
 import CartItem from '../components/CartItemComponent';
 import CheckoutInfo from '../components/CheckoutInfoComponent';
+import OrderComplete from '../components/OrderCompleteComponent';
 
-class Checkout extends React.Component {
+export class Checkout extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+
+    this.state = {
+      purchaseComplete: false,
+    };
+  }
+
   getCartItems() {
     const { cart } = this.props;
     const cartItems = [];
@@ -24,8 +33,15 @@ class Checkout extends React.Component {
     return this.props.cart.items.reduce((sum, item) => sum + (item.quantity * item.price), 0);
   }
 
+  setPurchaseComplete() {
+    this.setState({
+      purchaseComplete: true,
+    });
+  }
+
   render() {
     const cartItems = this.getCartItems();
+    const thing = this.state.purchaseComplete ? <OrderComplete /> : <CheckoutInfo onSuccess={this.setPurchaseComplete.bind(this)}/>;
 
     return (
       <div className="checkout-container">
@@ -42,7 +58,7 @@ class Checkout extends React.Component {
           </div>
           <div className="checkout-spacer"></div>
           <div className="customer-info">
-            <CheckoutInfo />
+            {thing}
           </div>
         </div>
       </div>
