@@ -37,7 +37,6 @@ class CartItem extends React.Component {
           <div className="item-remove">
             <i className="fa fa-trash pull-right" aria-hidden="true" onClick={this.removeItem.bind(this)}></i>
           </div>
-          <div className="spacer15"></div>
           <div className="item-quantity">
             <Quantity incrementFn={this.incrementQuantity.bind(this)} decrementFn={this.decrementQuantity.bind(this)} updateFn={this.updateQuantity.bind(this)} quantity={product.quantity} />
           </div>
@@ -56,4 +55,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(null, dispatch => bindActionCreators({ incrementQuantity, decrementQuantity, updateQuantity, removeProductFromCart }, dispatch))(CartItem);
+export default connect(mapStateToProps, dispatch => bindActionCreators({ incrementQuantity, decrementQuantity, updateQuantity, removeProductFromCart }, dispatch))(CartItem);

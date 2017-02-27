@@ -53,7 +53,7 @@ export class Checkout extends React.Component {
               {cartItems}
             </div>
             <div className="cart-footer">
-              <span className="pull-right">Subtotal: ${this.getSubtotal()}</span>
+              <span className="pull-right">Subtotal: ${this.getSubtotal().toFixed(2)}</span>
             </div>
           </div>
           <div className="checkout-spacer"></div>

@@ -60,7 +60,7 @@ class Cart extends React.Component {
             {cartContent}
           </div>
           {cart.items.length > 0 ? <div className="cart-footer">
-            <span className="pull-left">Subtotal: ${this.getSubtotal()}</span>
+            <span className="pull-left">Subtotal: ${this.getSubtotal().toFixed(2)}</span>
             <span className="pull-right"><button onClick={this.goToCheckout}>Go to Checkout</button></span>
           </div> : ''}
         </div>

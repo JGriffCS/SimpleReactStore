@@ -17,10 +17,10 @@ class Quantity extends React.Component {
     const { quantity } = this.props;
 
     return(
-      <div className="cart-quantity-container">
-        <button className="decrementBtn" onClick={this.decrement.bind(this)}>-</button>
-        <input className="quantityInput" ref={(el) => { this._quantity = el }} value={quantity} onChange={this.updateQuantity.bind(this)} />
-        <button className="incrementBtn" onClick={this.increment.bind(this)}>+</button>
+      <div className="cart-quantity-container form-group">
+        <button className="btn-primary quantity-btn decrementBtn" onClick={this.decrement.bind(this)}><i className="fa fa-minus" aria-hidden="true"></i></button>
+        <input className="form-control quantityInput" ref={(el) => { this._quantity = el }} value={quantity} onChange={this.updateQuantity.bind(this)} />
+        <button className="btn-primary quantity-btn incrementBtn" onClick={this.increment.bind(this)}><i className="fa fa-plus" aria-hidden="true"></i></button>
       </div>
     )
   }
