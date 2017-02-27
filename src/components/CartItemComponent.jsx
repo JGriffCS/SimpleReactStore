@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { incrementQuantity, decrementQuantity, updateQuantity } from '../actions/cart';
+import { incrementQuantity, decrementQuantity, updateQuantity, removeProductFromCart } from '../actions/cart';
 
 import Quantity from './QuantityComponent';
 
@@ -18,6 +18,10 @@ class CartItem extends React.Component {
     this.props.updateQuantity(this.props.product.productId, qty);
   }
 
+  removeItem() {
+    this.props.removeProductFromCart(this.props.product.productId);
+  }
+
   render() {
     const { product } = this.props;
 
@@ -31,7 +35,7 @@ class CartItem extends React.Component {
             {product.name}
           </div>
           <div className="item-remove">
-            <i className="fa fa-trash pull-right" aria-hidden="true"></i>
+            <i className="fa fa-trash pull-right" aria-hidden="true" onClick={this.removeItem.bind(this)}></i>
           </div>
           <div className="spacer15"></div>
           <div className="item-quantity">
@@ -52,4 +56,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, dispatch => bindActionCreators({ incrementQuantity, decrementQuantity, updateQuantity }, dispatch))(CartItem);
+export default connect(null, dispatch => bindActionCreators({ incrementQuantity, decrementQuantity, updateQuantity, removeProductFromCart }, dispatch))(CartItem);

@@ -37,16 +37,6 @@ class AddToCart extends React.Component {
     }
   }
 
-  generateQuantityOptions() {
-    const options = [];
-
-    for (let i = 1; i <= 10; i++) {
-      options.push(<option key={i} value={i}>{i}</option>);
-    }
-
-    return options;
-  }
-
   addItemToCart() {
     const { product } = this.props;
     const cartItem = {
@@ -61,13 +51,8 @@ class AddToCart extends React.Component {
   }
 
   render() {
-    const options = this.generateQuantityOptions();
-
-    return(
+    return (
       <div>
-        {/* <select ref={(el) => { this._quantity = el }}>
-          {options}
-        </select> */}
         <Quantity incrementFn={this.incrementQuantity.bind(this)} decrementFn={this.decrementQuantity.bind(this)} updateFn={this.updateQuantity.bind(this)} quantity={this.state.quantity} />
         <button onClick={this.addItemToCart.bind(this)}>Add to Cart</button>
       </div>
