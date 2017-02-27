@@ -16,7 +16,6 @@ require('./styles/main.scss');
 
 import { cart } from './reducers/cart.js';
 
-// TODO: Fill with semi-realistic data; Move to external JSON file
 const initialState = {
   products: products,
   cart: {
@@ -24,14 +23,13 @@ const initialState = {
     items: [],
   },
 };
-// TODO: Combine reducers once written
+
 const reducers = combineReducers({
   cart,
-  showCart: (state = []) => state,
   products: (state = []) => state,
 });
 
-const store = createStore(reducers, initialState);
+const store = createStore(reducers, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(
   <Provider store={store}>

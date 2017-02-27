@@ -39,6 +39,9 @@
   overflow-x: hidden;
   box-sizing: border-box;
   border: 1px solid #888;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 3px 3px 5px 0px #888;
   // -webkit-transition: max-height ease 1s;
   // transition: max-height ease 1s;
   // -webkit-transition: height ease 1s;

@@ -7,7 +7,7 @@ import BackButton from '../components/BackButtonComponent';
 class ProductDetail extends React.Component {
   render() {
     return (
-      <div className="product-detail-container">
+      <div className="container product-detail-container">
         <BackButton />
         <div className="details">
           <div>

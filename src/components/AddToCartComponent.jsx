@@ -21,7 +21,6 @@ class AddToCart extends React.Component {
   }
 
   decrementQuantity() {
-    debugger;
     if (this.state.quantity > 1) {
       this.setState({
         quantity: this.state.quantity - 1,

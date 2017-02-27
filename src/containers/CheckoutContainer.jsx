@@ -44,7 +44,7 @@ export class Checkout extends React.Component {
     const thing = this.state.purchaseComplete ? <OrderComplete /> : <CheckoutInfo onSuccess={this.setPurchaseComplete.bind(this)}/>;
 
     return (
-      <div className="checkout-container">
+      <div className="container checkout-container">
         <BackButton />
         <div className="checkout-details">
           <div className="cart-overview">
