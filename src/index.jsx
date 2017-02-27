@@ -9,6 +9,8 @@ import Catalog from './containers/CatalogContainer';
 import ProductDetail from './containers/ProductDetailContainer';
 import Checkout from './containers/CheckoutContainer';
 
+import { products } from '../assets/json/products.json';
+
 require("font-awesome-sass-loader");
 require('./styles/main.scss');
 
@@ -16,80 +18,7 @@ import { cart } from './reducers/cart.js';
 
 // TODO: Fill with semi-realistic data; Move to external JSON file
 const initialState = {
-  products: [
-    {
-      id: 1,
-      name: 'Product 1',
-      description:
-      `This is the description for Product 1! It would normally tell you
-       anything you could ever desire to know about the product! It's truly
-       a great product. Just ask anyone!`,
-      price: 10.50,
-      thumbnailUrl: 'http://placehold.it/75/032c6d/ffffff',
-      smallImageUrl: 'http://placehold.it/250/032c6d/ffffff',
-      imageUrl: 'http://placehold.it/550/032c6d/ffffff',
-    },
-    {
-      id: 2,
-      name: 'Product 2',
-      description:
-      `This is the description for Product 2! It would normally tell you
-       anything you could ever desire to know about the product! It's truly
-       a great product. Just ask anyone!`,
-      price: 9.99,
-      thumbnailUrl: 'http://placehold.it/75/b50505/ffffff',
-      smallImageUrl: 'http://placehold.it/250/b50505/ffffff',
-      imageUrl: 'http://placehold.it/550/b50505/ffffff',
-    },
-    {
-      id: 3,
-      name: 'Product 3',
-      description:
-      `This is the description for Product 3! It would normally tell you
-       anything you could ever desire to know about the product! It's truly
-       a great product. Just ask anyone!`,
-      price: .99,
-      thumbnailUrl: 'http://placehold.it/75/c66101/ffffff',
-      smallImageUrl: 'http://placehold.it/250/c66101/ffffff',
-      imageUrl: 'http://placehold.it/550/c66101/ffffff',
-    },
-    {
-      id: 4,
-      name: 'Product 4',
-      description:
-      `This is the description for Product 4! It would normally tell you
-       anything you could ever desire to know about the product! It's truly
-       a great product. Just ask anyone!`,
-      price: 20.00,
-      thumbnailUrl: 'http://placehold.it/75/2bc601/ffffff',
-      smallImageUrl: 'http://placehold.it/250/2bc601/ffffff',
-      imageUrl: 'http://placehold.it/550/2bc601/ffffff',
-    },
-    {
-      id: 5,
-      name: 'Product 5',
-      description:
-      `This is the description for Product 5! It would normally tell you
-       anything you could ever desire to know about the product! It's truly
-       a great product. Just ask anyone!`,
-      price: 49.99,
-      thumbnailUrl: 'http://placehold.it/75/01b8c6/ffffff',
-      smallImageUrl: 'http://placehold.it/250/01b8c6/ffffff',
-      imageUrl: 'http://placehold.it/550/01b8c6/ffffff',
-    },
-    {
-      id: 6,
-      name: 'Product 6',
-      description:
-      `This is the description for Product 6! It would normally tell you
-       anything you could ever desire to know about the product! It's truly
-       a great product. Just ask anyone!`,
-      price: 14.99,
-      thumbnailUrl: 'http://placehold.it/75/72015f/ffffff',
-      smallImageUrl: 'http://placehold.it/250/72015f/ffffff',
-      imageUrl: 'http://placehold.it/550/72015f/ffffff',
-    },
-  ],
+  products: products,
   cart: {
     visible: false,
     items: [],

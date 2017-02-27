@@ -8,7 +8,7 @@ class CatalogItem extends React.Component {
 
   render() {
     return (
-      <div className="catalog-item-container" onClick={this.goToDetail.bind(this)}>
+      <div className="catalog-item-container col-xs-12 col-sm-6 col-md-4 col-lg-3" onClick={this.goToDetail.bind(this)}>
         <div className="image-container"><img src={this.props.product.smallImageUrl} className="catalog-item-image" /></div>
         <div className="product-label">
           <span>{this.props.product.name}</span>

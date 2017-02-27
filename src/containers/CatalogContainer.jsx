@@ -6,7 +6,7 @@ import CatalogItem from '../components/CatalogItemComponent';
 class Catalog extends React.Component {
   render() {
     return (
-      <div className="catalog-container">
+      <div className="catalog-container row">
         {this.props.products.map((product, idx) => {
           return (
             <CatalogItem key={idx} product={product} />
