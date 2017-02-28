@@ -32,7 +32,7 @@ export class Checkout extends React.Component {
        const orderItems = [];
 
        for (let i = 0; i < orders[0].items.length; i++) {
-         orderItems.push(<CartItem key={orders[0].items[i].productId} product={orders[0].items[i]} />);
+         orderItems.push(<CartItem key={orders[0].items[i].productId} product={orders[0].items[i]} readonly="true"/>);
          if (i < orders[0].items.length - 1) {
            orderItems.push(<hr />);
          }

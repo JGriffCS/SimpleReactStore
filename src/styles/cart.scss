@@ -146,6 +146,10 @@
     .item-quantity {
       width: 60%;
       vertical-align: top;
+
+      .readonly {
+        font-size: 22px;
+      }
     }
 
     .item-price {

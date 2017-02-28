@@ -34,11 +34,15 @@ class CartItem extends React.Component {
           <div className="item-name">
             {product.name}
           </div>
-          <div className="item-remove">
-            <i className="fa fa-trash pull-right" aria-hidden="true" onClick={this.removeItem.bind(this)}></i>
-          </div>
+          {this.props.readonly !== 'true' ? (
+            <div className="item-remove">
+              <i className="fa fa-trash pull-right" aria-hidden="true" onClick={this.removeItem.bind(this)}></i>
+            </div>
+          ) : ''}
           <div className="item-quantity">
-            <Quantity incrementFn={this.incrementQuantity.bind(this)} decrementFn={this.decrementQuantity.bind(this)} updateFn={this.updateQuantity.bind(this)} quantity={product.quantity} />
+            {this.props.readonly !== 'true' ? (
+              <Quantity incrementFn={this.incrementQuantity.bind(this)} decrementFn={this.decrementQuantity.bind(this)} updateFn={this.updateQuantity.bind(this)} quantity={product.quantity} />
+            ) : <div className="readonly">Quantity : {product.quantity}</div>}
           </div>
           <div className="item-price">
             <span className="pull-right">${parseFloat(product.price).toFixed(2)}</span>
