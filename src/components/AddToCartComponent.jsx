@@ -51,7 +51,7 @@ class AddToCart extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="add-to-cart">
         <Quantity incrementFn={this.incrementQuantity.bind(this)} decrementFn={this.decrementQuantity.bind(this)} updateFn={this.updateQuantity.bind(this)} quantity={this.state.quantity} />
         <button onClick={this.addItemToCart.bind(this)}>Add to Cart</button>
       </div>

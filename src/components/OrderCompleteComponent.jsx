@@ -9,7 +9,7 @@ class OrderComplete extends React.Component {
         </div>
         <div>
           <p>Thank you for your business!</p>
-          <p>You should receive yor items in 3 to 5 business days.</p>
+          <p>You should receive your items in 3 to 5 business days.</p>
           <p>Please direct any questions, comments, or concerns to contact@thissite.com.</p>
         </div>
         <div>
