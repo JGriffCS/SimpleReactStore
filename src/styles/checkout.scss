@@ -12,7 +12,7 @@
     border-radius: 15px;
     overflow-y: hidden;
     min-height: 230px;
-    max-height: 560px;
+    max-height: 500px;
     width: 35%;
     padding: 15px;
     box-sizing: border-box;
@@ -22,8 +22,17 @@
     }
 
     .cart-content {
-      max-height: 430px;
+      max-height: 380px;
+      margin-top: 10px;
       overflow-y: auto;
+
+      hr {
+        height: 5px;
+        border: 0;
+        box-shadow: inset 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+        margin-top: 0px;
+        margin-bottom: 10px;
+      }
     }
 
     .cart-content::-webkit-scrollbar {
@@ -71,11 +80,6 @@
     .section {
       margin-bottom: 20px;
     }
-
-    .section-header {
-      font-size: 30px;
-      font-weight: bold;
-    }
   }
 
   .customer-info::-webkit-scrollbar {
@@ -118,4 +122,9 @@
       height: 30px;
     }
   }
+}
+
+.section-header {
+  font-size: 30px;
+  font-weight: bold;
 }

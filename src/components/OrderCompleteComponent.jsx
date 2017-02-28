@@ -1,4 +1,5 @@
 import React from 'react';
+import BackButton from '../components/BackButtonComponent';
 
 class OrderComplete extends React.Component {
   render() {
@@ -8,12 +9,13 @@ class OrderComplete extends React.Component {
           <h1>Purchase Complete!</h1>
         </div>
         <div>
+          <p>Your order number is: <strong>{this.props.orderId}</strong></p>
           <p>Thank you for your business!</p>
           <p>You should receive your items in 3 to 5 business days.</p>
           <p>Please direct any questions, comments, or concerns to contact@thissite.com.</p>
         </div>
         <div>
-          <button>Return to Catalog</button>
+          <BackButton />
         </div>
       </div>
     )

@@ -29,12 +29,15 @@ export class Checkout extends React.Component {
   getCartItems() {
     if (this.state.purchaseComplete === true && this.props.orders.length > 0) {
        const { orders } = this.props;
+       const currentOrderIdx = orders.findIndex((order) => parseInt(this.props.location.query.orderId, 10) === order.orderId);
        const orderItems = [];
 
-       for (let i = 0; i < orders[0].items.length; i++) {
-         orderItems.push(<CartItem key={orders[0].items[i].productId} product={orders[0].items[i]} readonly="true"/>);
-         if (i < orders[0].items.length - 1) {
-           orderItems.push(<hr />);
+       if (currentOrderIdx > -1) {
+         for (let i = 0; i < orders[currentOrderIdx].items.length; i++) {
+           orderItems.push(<CartItem key={orders[currentOrderIdx].items[i].productId} product={orders[currentOrderIdx].items[i]} readonly="true"/>);
+           if (i < orders[currentOrderIdx].items.length - 1) {
+             orderItems.push(<hr key={`hr${i}`} />);
+           }
          }
        }
 
@@ -46,7 +49,7 @@ export class Checkout extends React.Component {
       for (let i = 0; i < cart.items.length; i++) {
         cartItems.push(<CartItem key={cart.items[i].productId} product={cart.items[i]} />)
         if (i < cart.items.length - 1) {
-          cartItems.push(<hr />);
+          cartItems.push(<hr key={`hr${i}`} />);
         }
       }
 
@@ -72,19 +75,19 @@ export class Checkout extends React.Component {
 
   render() {
     const cartItems = this.getCartItems();
-    const thing = this.state.purchaseComplete ? <OrderComplete /> : <CheckoutInfo onSuccess={this.setPurchaseComplete.bind(this)}/>;
+    const thing = this.state.purchaseComplete ? <OrderComplete orderId={this.props.location.query.orderId} /> : <CheckoutInfo onSuccess={this.setPurchaseComplete.bind(this)}/>;
 
     return (
       <div className="container checkout-container">
         <BackButton />
         <div className="checkout-details">
           <div className="cart-overview">
-            <div className="title">Your Cart</div>
+            <div className="section-header text-center">{this.state.purchaseComplete ? 'Your Order' : 'Your Cart'}</div>
             <div className="cart-content">
               {cartItems}
             </div>
             <div className="cart-footer">
-              <span className="pull-right">Subtotal: ${this.getSubtotal().toFixed(2)}</span>
+              <span className="pull-right total-price"><strong>Total: ${this.getSubtotal().toFixed(2)}</strong></span>
             </div>
           </div>
           <div className="checkout-spacer"></div>

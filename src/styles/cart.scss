@@ -60,14 +60,14 @@
   hr {
     height: 5px;
     border: 0;
-    box-shadow: inset 0 5px 5px -5px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 10px 10px -10px rgba(0, 0, 0, 0.5);
     margin-top: 0px;
     margin-bottom: 10px;
   }
 }
 
 .scrollable-cart {
-  max-height: 405px;
+  max-height: 380px;
   overflow-x: hidden;
   overflow-y: auto;
   padding-right: 15px;
@@ -190,7 +190,7 @@
   box-sizing: border-box;
   width: calc(100% - 15px);
 
-  .subtotal {
+  .total-price {
     font-size: 20px;
   }
 }

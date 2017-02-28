@@ -33,7 +33,7 @@ class Cart extends React.Component {
     for (let i = 0; i < cart.items.length; i++) {
       cartItems.push(<CartItem key={cart.items[i].productId} product={cart.items[i]} />)
       if (i < cart.items.length - 1) {
-        cartItems.push(<hr />);
+        cartItems.push(<hr key={`hr${i}`} />);
       }
     }
 
@@ -60,7 +60,7 @@ class Cart extends React.Component {
             {cartContent}
           </div>
           {cart.items.length > 0 ? (<div className="cart-footer">
-            <span className="pull-left subtotal"><strong>Subtotal: ${this.getSubtotal().toFixed(2)}</strong></span>
+            <span className="pull-left total-price"><strong>Total: ${this.getSubtotal().toFixed(2)}</strong></span>
             <span className="pull-right"><button onClick={this.goToCheckout}>Go to Checkout</button></span>
           </div>) : ''}
         </div>
