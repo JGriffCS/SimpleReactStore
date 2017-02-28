@@ -1,11 +1,18 @@
+.cart-component-container {
+  width: 100%;
+}
+
 .cart-icon-container {
   width: 100px;
+  right: 0;
   height: 60px;
-  line-height: 60px;
+  line-height: 57px;
   text-align: center;
   cursor: pointer;
+  color: white;
   position: relative;
   z-index: 1;
+  float: right;
 
   i {
     font-size:55px;
@@ -25,12 +32,11 @@
 
 .cart-container {
   position: fixed;
-  right: 10em;
+  right: 0;
   padding: 15px 0 0 15px;
-  top: 60px;
+  top: -500px;
   width: 400px;
   height: auto;
-  display: none;
   min-height: 100px;
   max-height: 500px;
   background-color: white;
@@ -42,19 +48,13 @@
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   box-shadow: 3px 3px 5px 0px #888;
-  // -webkit-transition: max-height ease 1s;
-  // transition: max-height ease 1s;
-  // -webkit-transition: height ease 1s;
-  // transition: height ease 1s;
-  // -webkit-transition: min-height ease 1s;
-  // transition: min=height ease 1s;
-  // max-height: 0;
-  // min-height: 0;
+  -webkit-transition: top ease-in .75s;
+  transition: top ease-in .75s;
 
   &.open {
-    display: block;
-    // min-height: 150px;
-    // max-height: 500px;
+    top: 60px;
+    -webkit-transition: top ease-out .75s;
+    transition: top ease-out .75s;
   }
 
   hr {
@@ -166,7 +166,7 @@
   }
 
   input {
-    width: 50px;
+    width: 60px;
     height: 30px;
     margin-left: 7.5px;
     margin-right: 7.5px;
@@ -180,13 +180,13 @@
 
 .cart-footer {
   margin-top: 10px;
+  padding-top: 10px;
   border-top: 1px solid black;
   height: 50px;
-  line-height: 50px;
   box-sizing: border-box;
   width: calc(100% - 15px);
 
-  span {
-    line-height: 50px;
+  .subtotal {
+    font-size: 20px;
   }
 }

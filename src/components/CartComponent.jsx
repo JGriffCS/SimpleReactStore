@@ -59,10 +59,10 @@ class Cart extends React.Component {
           <div className="scrollable-cart">
             {cartContent}
           </div>
-          {cart.items.length > 0 ? <div className="cart-footer">
-            <span className="pull-left">Subtotal: ${this.getSubtotal().toFixed(2)}</span>
+          {cart.items.length > 0 ? (<div className="cart-footer">
+            <span className="pull-left subtotal"><strong>Subtotal: ${this.getSubtotal().toFixed(2)}</strong></span>
             <span className="pull-right"><button onClick={this.goToCheckout}>Go to Checkout</button></span>
-          </div> : ''}
+          </div>) : ''}
         </div>
       </div>
     );

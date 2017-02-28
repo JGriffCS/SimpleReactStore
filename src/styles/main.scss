@@ -9,7 +9,6 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 body {
   margin: 0;
   padding: 0;
-  min-width: 1100px;
 }
 
 .header-container {
@@ -19,10 +18,6 @@ body {
   height: 60px;
   box-shadow: 0 4px 5px #888888;
   background-color: #2056ad;
-  color: white;
-  padding-left: 8em;
-  padding-right: 8em;
-  box-sizing: border-box;
 }
 
 .content-container {
