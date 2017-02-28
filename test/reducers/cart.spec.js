@@ -1,35 +1,37 @@
 import { cart } from '../../src/reducers/cart';
-import { TOGGLE_CART_VISIBILITY, ADD_PRODUCT_TO_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY, UPDATE_QUANTITY, REMOVE_PRODUCT_FROM_CART } from '../../src/constants/ActionTypes';
+import { TOGGLE_CART_VISIBILITY, SET_CART_VISIBILITY, ADD_PRODUCT_TO_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY, UPDATE_QUANTITY, REMOVE_PRODUCT_FROM_CART } from '../../src/constants/ActionTypes';
 
 describe('cart reducer', () => {
   it('should return the initial state', () => {
     expect(
       cart(undefined, {})
-    ).toEqual({ visible: false, items: [], })
+    ).toEqual({ visible: false, items: [], });
   })
 
-  it('should handle TOGGLE_CART_VISIBILITY', () => {
+  it('should toggle the visibility of the cart', () => {
     expect(
       cart({ visible: false, items: [], }, {
         type: TOGGLE_CART_VISIBILITY,
       })
-    ).toEqual({ visible: true, items: [], })
+    ).toEqual({ visible: true, items: [], });
 
     expect(
       cart({ visible: true, items: [], }, {
         type: TOGGLE_CART_VISIBILITY,
       })
-    ).toEqual({ visible: false, items: [], })
+    ).toEqual({ visible: false, items: [], });
+  });
 
+  it('should set the visibility of the cart when a state is provided', () => {
     expect(
-      cart({ visible: false, items: [], }, {
-        type: TOGGLE_CART_VISIBILITY,
+      cart({ visible: true, items: [], }, {
+        type: SET_CART_VISIBILITY,
         visibility: false,
       })
-    ).toEqual({ visible: false, items: [], })
-  })
+    ).toEqual({ visible: false, items: [], });
+  });
 
-  it('should handle ADD_PRODUCT_TO_CART', () => {
+  it('should add a new product to an empty cart', () => {
     expect(
       cart({ visible: false, items: []}, {
         type: ADD_PRODUCT_TO_CART,
@@ -52,8 +54,10 @@ describe('cart reducer', () => {
           quantity: 1,
         }
       ]
-    })
+    });
+  });
 
+  it('should add a new product to a cart with other items', () => {
     expect(
       cart({ visible: false, items: [
         {
@@ -88,8 +92,10 @@ describe('cart reducer', () => {
         thumbnailUrl: 'http://placehold.it/50/c66101/ffffff',
         quantity: 3,
       }
-    ]})
+    ]});
+  });
 
+  it('should increment the quantity if an item that is already in the cart is added again', () => {
     expect(
       cart({ visible: false, items: [
         {
@@ -118,9 +124,9 @@ describe('cart reducer', () => {
         quantity: 5,
       },
     ]})
-  })
+  });
 
-  it('should handle INCREMENT_QUANITY', () => {
+  it('should increment the quantity of an existing item in the cart', () => {
     expect(
       cart({ visible: false, items: [
         {
@@ -142,10 +148,10 @@ describe('cart reducer', () => {
         thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
         quantity: 2,
       }
-    ]})
-  })
+    ]});
+  });
 
-  it('should handle DECREMENT_QUANTITY', () => {
+  it('should handle decrement the quantity of an existing item in the cart', () => {
     expect(
       cart({ visible: false, items: [
         {
@@ -167,8 +173,10 @@ describe('cart reducer', () => {
         thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
         quantity: 2,
       }
-    ]})
+    ]});
+  });
 
+  it('should prevent the quantity of an item from going below 0 on decrement', () => {
     expect(
       cart({ visible: false, items: [
         {
@@ -190,12 +198,10 @@ describe('cart reducer', () => {
         thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
         quantity: 1,
       }
-    ]})
-  })
+    ]});
+  });
 
-
-
-  it('should handle UPDATE_QUANTITY', () => {
+  it('should set the quantity of an existing item in the cart', () => {
     expect(
       cart({ visible: false, items: [
         {
@@ -218,8 +224,10 @@ describe('cart reducer', () => {
         thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
         quantity: 22,
       }
-    ]})
+    ]});
+  });
 
+  it('should prevent the quantity of an item from being set to below 0', () => {
     expect(
       cart({ visible: false, items: [
         {
@@ -242,8 +250,10 @@ describe('cart reducer', () => {
         thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
         quantity: 5,
       }
-    ]})
+    ]});
+  });
 
+  it('should prevent the quantity of an item from being set to above 999', () => {
     expect(
       cart({ visible: false, items: [
         {
@@ -267,9 +277,9 @@ describe('cart reducer', () => {
         quantity: 5,
       }
     ]})
-  })
+  });
 
-  it('should handle REMOVE_PRODUCT_FROM_CART', () => {
+  it('should remove an item from the cart', () => {
     expect(
       cart({ visible: false, items: [
         {
@@ -298,8 +308,10 @@ describe('cart reducer', () => {
         thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
         quantity: 1,
       },
-    ]})
+    ]});
+  });
 
+  it('should return the current cart if no item was found to remove', () => {
     expect(
       cart({ visible: false, items: [
         {
@@ -321,6 +333,6 @@ describe('cart reducer', () => {
         thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
         quantity: 1,
       },
-    ]})
-  })
+    ]});
+  });
 })

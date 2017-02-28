@@ -1,5 +1,5 @@
-import { TOGGLE_CART_VISIBILITY, ADD_PRODUCT_TO_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY, UPDATE_QUANTITY, REMOVE_PRODUCT_FROM_CART } from '../../src/constants/ActionTypes';
-import { toggleCartVisibility, addProductToCart, incrementQuantity, decrementQuantity, updateQuantity, removeProductFromCart } from '../../src/actions/cart';
+import { TOGGLE_CART_VISIBILITY, SET_CART_VISIBILITY, ADD_PRODUCT_TO_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY, UPDATE_QUANTITY, REMOVE_PRODUCT_FROM_CART } from '../../src/constants/ActionTypes';
+import { toggleCartVisibility, setCartVisibility, addProductToCart, incrementQuantity, decrementQuantity, updateQuantity, removeProductFromCart } from '../../src/actions/cart';
 
 describe('cart actions', () => {
   it('should create an action to toggle visibility of the cart', () => {
@@ -8,7 +8,18 @@ describe('cart actions', () => {
     };
 
     expect(toggleCartVisibility()).toEqual(expectedAction);
-  })
+  });
+
+  it('should create an action to set the visibility of the cart', () => {
+    const visibility = false;
+
+    const expectedAction = {
+      type: SET_CART_VISIBILITY,
+      visibility,
+    };
+
+    expect(setCartVisibility(false)).toEqual(expectedAction);
+  });
 
   it('should create an action to add a product to the cart', () => {
     const product = {
@@ -25,7 +36,7 @@ describe('cart actions', () => {
     };
 
     expect(addProductToCart(product)).toEqual(expectedAction);
-  })
+  });
 
   it('should create an action to increment quantity', () => {
     const productId = 3;
@@ -36,7 +47,7 @@ describe('cart actions', () => {
     };
 
     expect(incrementQuantity(productId)).toEqual(expectedAction);
-  })
+  });
 
   it('should create an action to decrement quantity', () => {
     const productId = 3;
@@ -47,7 +58,7 @@ describe('cart actions', () => {
     };
 
     expect(decrementQuantity(productId)).toEqual(expectedAction);
-  })
+  });
 
   it('should create an action to update quantity', () => {
     const productId = 3,
@@ -60,7 +71,7 @@ describe('cart actions', () => {
     };
 
     expect(updateQuantity(productId, quantity)).toEqual(expectedAction);
-  })
+  });
 
   it('should create an action to remove a product from the cart', () => {
     const productId = 1;
@@ -71,5 +82,5 @@ describe('cart actions', () => {
     };
 
     expect(removeProductFromCart(productId)).toEqual(expectedAction);
-  })
+  });
 })

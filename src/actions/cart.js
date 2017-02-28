@@ -1,8 +1,14 @@
-import { TOGGLE_CART_VISIBILITY, ADD_PRODUCT_TO_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY, UPDATE_QUANTITY, REMOVE_PRODUCT_FROM_CART } from '../constants/ActionTypes';
+import { TOGGLE_CART_VISIBILITY, SET_CART_VISIBILITY, ADD_PRODUCT_TO_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY, UPDATE_QUANTITY, REMOVE_PRODUCT_FROM_CART } from '../constants/ActionTypes';
 
-export function toggleCartVisibility(visibility) {
+export function toggleCartVisibility() {
   return {
     type: TOGGLE_CART_VISIBILITY,
+  };
+}
+
+export function setCartVisibility(visibility) {
+  return {
+    type: SET_CART_VISIBILITY,
     visibility,
   };
 }

@@ -14,7 +14,8 @@ import { products } from '../assets/json/products.json';
 require("font-awesome-sass-loader");
 require('./styles/main.scss');
 
-import { cart } from './reducers/cart.js';
+import { cart } from './reducers/cart';
+import { orders } from './reducers/orders';
 
 const initialState = {
   products: products,
@@ -22,10 +23,12 @@ const initialState = {
     visible: false,
     items: [],
   },
+  orders: [],
 };
 
 const reducers = combineReducers({
   cart,
+  orders,
   products: (state = []) => state,
 });
 

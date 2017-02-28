@@ -1,11 +1,19 @@
-import { TOGGLE_CART_VISIBILITY, ADD_PRODUCT_TO_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY, UPDATE_QUANTITY, REMOVE_PRODUCT_FROM_CART } from '../constants/ActionTypes';
+import { TOGGLE_CART_VISIBILITY, SET_CART_VISIBILITY, ADD_PRODUCT_TO_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY, UPDATE_QUANTITY, REMOVE_PRODUCT_FROM_CART } from '../constants/ActionTypes';
 
 export const cart = (state = { visible: false, items: [], }, action) => {
   switch (action.type) {
     case TOGGLE_CART_VISIBILITY:
       return Object.assign({}, state, {
-        visible: typeof action.visibility !== 'undefined' ? action.visibility : !state.visible,
-      })
+        visible: !state.visible,
+      });
+    case SET_CART_VISIBILITY:
+      if (typeof action.visibility !== 'undefined') {
+        return Object.assign({}, state, {
+            visible: action.visibility,
+          });
+      }
+
+      return state;
     case ADD_PRODUCT_TO_CART:
       // If the product is already in the cart, update its quantity
       if (state.items.findIndex((item) => item.productId === action.product.productId) !== -1) {

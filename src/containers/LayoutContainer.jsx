@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { hashHistory } from 'react-router';
 import { bindActionCreators } from 'redux';
 
-import { toggleCartVisibility } from '../actions/cart';
+import { setCartVisibility } from '../actions/cart';
 
 import Header from './HeaderContainer';
 
@@ -11,7 +11,7 @@ class Layout extends React.Component {
   componentDidMount() {
     // TODO: Hashhistory listeners fired twice due to bug: https://github.com/ReactTraining/history/issues/427. Maybe upgrade (or downgrade?) library
     hashHistory.listen(() => {
-      this.props.toggleCartVisibility(false);
+      this.props.setCartVisibility(false);
     });
   }
 
@@ -27,4 +27,4 @@ class Layout extends React.Component {
   }
 }
 
-export default connect(null, dispatch => bindActionCreators({ toggleCartVisibility }, dispatch))(Layout);
+export default connect(null, dispatch => bindActionCreators({ setCartVisibility }, dispatch))(Layout);
