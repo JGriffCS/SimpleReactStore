@@ -1,5 +1,5 @@
-import { TOGGLE_CART_VISIBILITY, SET_CART_VISIBILITY, ADD_PRODUCT_TO_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY, UPDATE_QUANTITY, REMOVE_PRODUCT_FROM_CART } from '../../src/constants/ActionTypes';
-import { toggleCartVisibility, setCartVisibility, addProductToCart, incrementQuantity, decrementQuantity, updateQuantity, removeProductFromCart } from '../../src/actions/cart';
+import { TOGGLE_CART_VISIBILITY, SET_CART_VISIBILITY, ADD_PRODUCT_TO_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY, UPDATE_QUANTITY, REMOVE_PRODUCT_FROM_CART, EMPTY_CART } from '../../src/constants/ActionTypes';
+import { toggleCartVisibility, setCartVisibility, addProductToCart, incrementQuantity, decrementQuantity, updateQuantity, removeProductFromCart, emptyCart } from '../../src/actions/cart';
 
 describe('cart actions', () => {
   it('should create an action to toggle visibility of the cart', () => {
@@ -83,4 +83,12 @@ describe('cart actions', () => {
 
     expect(removeProductFromCart(productId)).toEqual(expectedAction);
   });
-})
+
+  it('should create an action to empty all products from the cart', () => {
+    const expectedAction = {
+      type: EMPTY_CART,
+    };
+
+    expect(emptyCart()).toEqual(expectedAction);
+  });
+});

@@ -1,5 +1,5 @@
 import { cart } from '../../src/reducers/cart';
-import { TOGGLE_CART_VISIBILITY, SET_CART_VISIBILITY, ADD_PRODUCT_TO_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY, UPDATE_QUANTITY, REMOVE_PRODUCT_FROM_CART } from '../../src/constants/ActionTypes';
+import { TOGGLE_CART_VISIBILITY, SET_CART_VISIBILITY, ADD_PRODUCT_TO_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY, UPDATE_QUANTITY, REMOVE_PRODUCT_FROM_CART, EMPTY_CART } from '../../src/constants/ActionTypes';
 
 describe('cart reducer', () => {
   it('should return the initial state', () => {
@@ -295,7 +295,7 @@ describe('cart reducer', () => {
           price: .99,
           thumbnailUrl: 'http://placehold.it/50/c66101/ffffff',
           quantity: 3,
-        }
+        },
       ]}, {
         type: REMOVE_PRODUCT_FROM_CART,
         productId: 3,
@@ -334,5 +334,28 @@ describe('cart reducer', () => {
         quantity: 1,
       },
     ]});
+  });
+
+  it('should empty the cart of all contents', () => {
+    expect(
+      cart({ visible: false, items: [
+        {
+          productId: 1,
+          name: 'Product 1',
+          price: 10.50,
+          thumbnailUrl: 'http://placehold.it/50/032c6d/ffffff',
+          quantity: 1,
+        },
+        {
+          productId: 3,
+          name: 'Product 3',
+          price: .99,
+          thumbnailUrl: 'http://placehold.it/50/c66101/ffffff',
+          quantity: 3,
+        },
+      ]}, {
+        type: EMPTY_CART,
+      })
+    ).toEqual({ visible: false, items: [], });
   });
 })

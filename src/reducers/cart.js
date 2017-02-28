@@ -1,4 +1,4 @@
-import { TOGGLE_CART_VISIBILITY, SET_CART_VISIBILITY, ADD_PRODUCT_TO_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY, UPDATE_QUANTITY, REMOVE_PRODUCT_FROM_CART } from '../constants/ActionTypes';
+import { TOGGLE_CART_VISIBILITY, SET_CART_VISIBILITY, ADD_PRODUCT_TO_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY, UPDATE_QUANTITY, REMOVE_PRODUCT_FROM_CART, EMPTY_CART } from '../constants/ActionTypes';
 
 export const cart = (state = { visible: false, items: [], }, action) => {
   switch (action.type) {
@@ -81,6 +81,10 @@ export const cart = (state = { visible: false, items: [], }, action) => {
       }
 
       return state;
+    case EMPTY_CART:
+      return Object.assign({}, state, {
+        items: [],
+      });
     default:
       return state;
   }

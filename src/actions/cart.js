@@ -1,4 +1,4 @@
-import { TOGGLE_CART_VISIBILITY, SET_CART_VISIBILITY, ADD_PRODUCT_TO_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY, UPDATE_QUANTITY, REMOVE_PRODUCT_FROM_CART } from '../constants/ActionTypes';
+import { TOGGLE_CART_VISIBILITY, SET_CART_VISIBILITY, ADD_PRODUCT_TO_CART, INCREMENT_QUANTITY, DECREMENT_QUANTITY, UPDATE_QUANTITY, REMOVE_PRODUCT_FROM_CART, EMPTY_CART } from '../constants/ActionTypes';
 
 export function toggleCartVisibility() {
   return {
@@ -39,12 +39,18 @@ export function updateQuantity(productId, quantity) {
     type: UPDATE_QUANTITY,
     productId,
     quantity,
-  }
+  };
 }
 
 export function removeProductFromCart(productId) {
   return {
     type: REMOVE_PRODUCT_FROM_CART,
     productId,
+  };
+}
+
+export function emptyCart() {
+  return {
+    type: EMPTY_CART,
   };
 }
