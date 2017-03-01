@@ -19,7 +19,8 @@ const initialFormValues = {
     paymentInfo: {
       cardNumber: '1234123412341234',
       cardholderName: 'Josh Griffiths',
-      expirationDate: '08/2020',
+      expirationMonth: '08',
+      expirationYear: '2020',
     },
     billingAddress: {
       firstName: '',
@@ -92,6 +93,4 @@ describe('Checkout Info Component', function() {
     wrapper.find('[type="submit"]').get(0).click();
     expect(submitCallback.calledOnce).toEqual(true);
   });
-
-  // TODO: Tests for specific validators
 });

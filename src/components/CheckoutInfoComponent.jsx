@@ -30,7 +30,8 @@ const defaultFormValues = {
     paymentInfo: {
       cardNumber: '',
       cardholderName: '',
-      expirationDate: '',
+      expirationMonth: '',
+      expirationYear: '',
     },
 };
 

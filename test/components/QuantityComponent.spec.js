@@ -32,5 +32,5 @@ describe('Quantity Component', function() {
 
     expect(updateQuantity.calledOnce).toEqual(true);
     expect(updateQuantity.calledWith(4)).toEqual(true);
-  })
+  });
 });
