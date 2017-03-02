@@ -17,8 +17,9 @@ class ProductDetail extends React.Component {
             <div>
               <h1>{this.props.product.name}</h1>
             </div>
-            <div>
+            <div className="description">
               <p>{this.props.product.description}</p>
+              <p><strong>${this.props.product.price.toFixed(2)}</strong></p>
             </div>
             <div>
               <AddToCart {...this.props} />

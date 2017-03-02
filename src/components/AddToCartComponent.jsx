@@ -1,7 +1,11 @@
 import React from 'react';
+import { hashHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addProductToCart } from '../actions/cart';
+
+import { actions as notifActions } from 'redux-notifications';
+const { notifSend } = notifActions;
 
 import Quantity from './QuantityComponent';
 
@@ -52,6 +56,8 @@ class AddToCart extends React.Component {
     };
 
     this.props.addProductToCart(cartItem);
+    this.props.notifSend({ message: `${this.state.quantity} item(s) added to the cart`, kind: 'success', dismissAfter: 3500, });
+    hashHistory.push('/catalog');
   }
 
   render() {
@@ -64,4 +70,4 @@ class AddToCart extends React.Component {
   }
 }
 
-export default connect(null, dispatch => bindActionCreators({ addProductToCart }, dispatch))(AddToCart);
+export default connect(null, dispatch => bindActionCreators({ addProductToCart, notifSend }, dispatch))(AddToCart);

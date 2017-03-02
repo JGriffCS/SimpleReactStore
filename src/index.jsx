@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRedirect, hashHistory } from 'react-router';
 import { Provider } from 'react-redux';
-import { createStore, combineReducers } from 'redux';
+import { createStore, compose, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
 import Layout from './containers/LayoutContainer';
 import Catalog from './containers/CatalogContainer';
@@ -16,6 +17,7 @@ require('./styles/main.scss');
 
 import { cart } from './reducers/cart';
 import { orders } from './reducers/orders';
+import { reducer as notifs } from 'redux-notifications';
 
 const initialState = {
   products: products,
@@ -27,12 +29,17 @@ const initialState = {
 };
 
 const reducers = combineReducers({
+  notifs,
   cart,
   orders,
   products: (state = []) => state,
 });
 
-const store = createStore(reducers, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const createStoreWithMiddleware = compose(
+  applyMiddleware(thunk)
+)(createStore);
+
+const store = createStoreWithMiddleware(reducers, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(
   <Provider store={store}>

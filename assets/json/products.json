@@ -59,72 +59,72 @@
       "name": "Product 7",
       "description": "This is the description for Product 7! It would normally tell you anything you could ever desire to know about the product! It's truly a great product. Just ask anyone!",
       "price": 11.95,
-      "thumbnailUrl": "http://placehold.it/75/72015f/ffffff",
-      "smallImageUrl": "http://placehold.it/250/72015f/ffffff",
-      "imageUrl": "http://placehold.it/550/72015f/ffffff"
+      "thumbnailUrl": "http://placehold.it/75/f4429b/ffffff",
+      "smallImageUrl": "http://placehold.it/250/f4429b/ffffff",
+      "imageUrl": "http://placehold.it/550/f4429b/ffffff"
     },
     {
       "id": 8,
       "name": "Product 8",
       "description": "This is the description for Product 8! It would normally tell you anything you could ever desire to know about the product! It's truly a great product. Just ask anyone!",
       "price": 3.50,
-      "thumbnailUrl": "http://placehold.it/75/72015f/ffffff",
-      "smallImageUrl": "http://placehold.it/250/72015f/ffffff",
-      "imageUrl": "http://placehold.it/550/72015f/ffffff"
+      "thumbnailUrl": "http://placehold.it/75/050304/ffffff",
+      "smallImageUrl": "http://placehold.it/250/050304/ffffff",
+      "imageUrl": "http://placehold.it/550/050304/ffffff"
     },
     {
       "id": 9,
       "name": "Product 9",
       "description": "This is the description for Product 9! It would normally tell you anything you could ever desire to know about the product! It's truly a great product. Just ask anyone!",
       "price": 22.99,
-      "thumbnailUrl": "http://placehold.it/75/72015f/ffffff",
-      "smallImageUrl": "http://placehold.it/250/72015f/ffffff",
-      "imageUrl": "http://placehold.it/550/72015f/ffffff"
+      "thumbnailUrl": "http://placehold.it/75/82801a/ffffff",
+      "smallImageUrl": "http://placehold.it/250/82801a/ffffff",
+      "imageUrl": "http://placehold.it/550/82801a/ffffff"
     },
     {
       "id": 10,
       "name": "Product 10",
       "description": "This is the description for Product 10! It would normally tell you anything you could ever desire to know about the product! It's truly a great product. Just ask anyone!",
       "price": 3.99,
-      "thumbnailUrl": "http://placehold.it/75/72015f/ffffff",
-      "smallImageUrl": "http://placehold.it/250/72015f/ffffff",
-      "imageUrl": "http://placehold.it/550/72015f/ffffff"
+      "thumbnailUrl": "http://placehold.it/75/015412/ffffff",
+      "smallImageUrl": "http://placehold.it/250/015412/ffffff",
+      "imageUrl": "http://placehold.it/550/015412/ffffff"
     },
     {
       "id": 11,
       "name": "Product 11",
       "description": "This is the description for Product 11! It would normally tell you anything you could ever desire to know about the product! It's truly a great product. Just ask anyone!",
       "price": 15.95,
-      "thumbnailUrl": "http://placehold.it/75/72015f/ffffff",
-      "smallImageUrl": "http://placehold.it/250/72015f/ffffff",
-      "imageUrl": "http://placehold.it/550/72015f/ffffff"
+      "thumbnailUrl": "http://placehold.it/75/271651/ffffff",
+      "smallImageUrl": "http://placehold.it/250/271651/ffffff",
+      "imageUrl": "http://placehold.it/550/271651/ffffff"
     },
     {
       "id": 12,
       "name": "Product 12",
       "description": "This is the description for Product 12! It would normally tell you anything you could ever desire to know about the product! It's truly a great product. Just ask anyone!",
       "price": 8.75,
-      "thumbnailUrl": "http://placehold.it/75/72015f/ffffff",
-      "smallImageUrl": "http://placehold.it/250/72015f/ffffff",
-      "imageUrl": "http://placehold.it/550/72015f/ffffff"
+      "thumbnailUrl": "http://placehold.it/75/dd4242/ffffff",
+      "smallImageUrl": "http://placehold.it/250/dd4242/ffffff",
+      "imageUrl": "http://placehold.it/550/dd4242/ffffff"
     },
     {
       "id": 13,
       "name": "Product 13",
       "description": "This is the description for Product 13! It would normally tell you anything you could ever desire to know about the product! It's truly a great product. Just ask anyone!",
       "price": 39.99,
-      "thumbnailUrl": "http://placehold.it/75/72015f/ffffff",
-      "smallImageUrl": "http://placehold.it/250/72015f/ffffff",
-      "imageUrl": "http://placehold.it/550/72015f/ffffff"
+      "thumbnailUrl": "http://placehold.it/75/6b451f/ffffff",
+      "smallImageUrl": "http://placehold.it/250/6b451f/ffffff",
+      "imageUrl": "http://placehold.it/550/6b451f/ffffff"
     },
     {
       "id": 14,
       "name": "Product 14",
       "description": "This is the description for Product 14! It would normally tell you anything you could ever desire to know about the product! It's truly a great product. Just ask anyone!",
       "price": 44.95,
-      "thumbnailUrl": "http://placehold.it/75/72015f/ffffff",
-      "smallImageUrl": "http://placehold.it/250/72015f/ffffff",
-      "imageUrl": "http://placehold.it/550/72015f/ffffff"
+      "thumbnailUrl": "http://placehold.it/75/1f1f6b/ffffff",
+      "smallImageUrl": "http://placehold.it/250/1f1f6b/ffffff",
+      "imageUrl": "http://placehold.it/550/1f1f6b/ffffff"
     }
   ]
 }

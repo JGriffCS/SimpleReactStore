@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 import { setCartVisibility } from '../actions/cart';
 
 import Header from './HeaderContainer';
+import { Notifs } from 'redux-notifications';
 
 class Layout extends React.Component {
   componentDidMount() {
@@ -22,6 +23,7 @@ class Layout extends React.Component {
         <div className="content-container">
           {this.props.children}
         </div>
+        <Notifs componentClassName="custom-toaster" />
       </div>
     )
   }

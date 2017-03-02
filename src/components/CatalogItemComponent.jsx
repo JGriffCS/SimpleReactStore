@@ -8,7 +8,7 @@ class CatalogItem extends React.Component {
 
     this.goToDetail = this.goToDetail.bind(this);
   }
-  
+
   goToDetail() {
     hashHistory.push(`/detail/${this.props.product.id}`);
   }
@@ -19,7 +19,7 @@ class CatalogItem extends React.Component {
         <div className="image-container"><img src={this.props.product.smallImageUrl} className="catalog-item-image" /></div>
         <div className="product-label">
           <span>{this.props.product.name}</span>
-          <span className="pull-right">${this.props.product.price.toFixed(2)}</span>
+          <span className="pull-right price">${this.props.product.price.toFixed(2)}</span>
         </div>
       </div>
     )
