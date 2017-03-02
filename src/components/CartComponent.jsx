@@ -8,6 +8,11 @@ import { toggleCartVisibility } from '../actions/cart';
 import CartItem from './CartItemComponent';
 
 class Cart extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+
+    this.toggleCart = this.toggleCart.bind(this);
+  }
   toggleCart() {
     this.props.toggleCartVisibility();
   }
@@ -31,7 +36,7 @@ class Cart extends React.Component {
     const cartItems = [];
 
     for (let i = 0; i < cart.items.length; i++) {
-      cartItems.push(<CartItem key={cart.items[i].productId} product={cart.items[i]} />)
+      cartItems.push(<CartItem key={cart.items[i].productId} uniqueKey={cart.items[i].productId} product={cart.items[i]} />)
       if (i < cart.items.length - 1) {
         cartItems.push(<hr key={`hr${i}`} />);
       }
@@ -40,7 +45,7 @@ class Cart extends React.Component {
     return cartItems;
   }
 
-  getSubtotal() {
+  getTotal() {
     return this.props.cart.items.reduce((sum, item) => sum + (item.quantity * item.price), 0);
   }
 
@@ -51,7 +56,7 @@ class Cart extends React.Component {
 
     return (
       <div>
-        <div className="fa-stack cart-icon-container" onClick={this.toggleCart.bind(this)}>
+        <div className="fa-stack cart-icon-container" onClick={this.toggleCart}>
           <i className="fa fa-shopping-cart fa-stack-2x" aria-hidden="true"></i>
           <strong className="fa-stack unselectable">{quantity}</strong>
         </div>
@@ -60,7 +65,7 @@ class Cart extends React.Component {
             {cartContent}
           </div>
           {cart.items.length > 0 ? (<div className="cart-footer">
-            <span className="pull-left total-price"><strong>Total: ${this.getSubtotal().toFixed(2)}</strong></span>
+            <span className="pull-left total-price"><strong>Total: ${this.getTotal().toFixed(2)}</strong></span>
             <span className="pull-right"><button onClick={this.goToCheckout}>Go to Checkout</button></span>
           </div>) : ''}
         </div>

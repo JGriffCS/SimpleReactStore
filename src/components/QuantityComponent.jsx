@@ -1,6 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 class Quantity extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+
+    this.increment = this.increment.bind(this);
+    this.decrement = this.decrement.bind(this);
+    this.updateQuantity = this.updateQuantity.bind(this);
+  }
+
   increment() {
     this.props.incrementFn();
   }
@@ -18,12 +27,12 @@ class Quantity extends React.Component {
 
     return(
       <div className="cart-quantity-container">
-        <button className="btn-primary quantity-btn decrementBtn" onClick={this.decrement.bind(this)}><i className="fa fa-minus" aria-hidden="true"></i></button>
-        <input className="form-control quantityInput" ref={(el) => { this._quantity = el }} value={quantity} onChange={this.updateQuantity.bind(this)} />
-        <button className="btn-primary quantity-btn incrementBtn" onClick={this.increment.bind(this)}><i className="fa fa-plus" aria-hidden="true"></i></button>
+        <button className="btn-primary quantity-btn decrementBtn" onClick={this.decrement}><i className="fa fa-minus" aria-hidden="true"></i></button>
+        <input className="form-control quantityInput" ref={(el) => { this._quantity = el }} value={quantity} onChange={this.updateQuantity} />
+        <button className="btn-primary quantity-btn incrementBtn" onClick={this.increment}><i className="fa fa-plus" aria-hidden="true"></i></button>
       </div>
     )
   }
 }
 
-export default Quantity;
+export default connect(null)(Quantity);

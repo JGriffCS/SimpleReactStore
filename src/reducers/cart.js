@@ -20,7 +20,9 @@ export const cart = (state = { visible: false, items: [], }, action) => {
         return Object.assign({}, state, {
           items: state.items.map((item, index) => {
                   if (item.productId === action.product.productId) {
-                    item.quantity += action.product.quantity;
+                    return Object.assign({}, item, {
+                      quantity: item.quantity + action.product.quantity,
+                    });
                   }
 
                   return item;
@@ -39,7 +41,9 @@ export const cart = (state = { visible: false, items: [], }, action) => {
       return Object.assign({}, state, {
         items: state.items.map((item, index) => {
                 if (item.productId === action.productId) {
-                  item.quantity += 1;
+                  return Object.assign({}, item, {
+                    quantity: item.quantity + 1,
+                  });
                 }
 
                 return item;
@@ -50,7 +54,9 @@ export const cart = (state = { visible: false, items: [], }, action) => {
         items: state.items.map((item, index) => {
                 if (item.productId === action.productId) {
                   if (item.quantity > 1) {
-                    item.quantity -= 1;
+                    return Object.assign({}, item, {
+                      quantity: item.quantity - 1,
+                    });
                   }
                 }
 
@@ -62,7 +68,9 @@ export const cart = (state = { visible: false, items: [], }, action) => {
         items: state.items.map((item, index) => {
                 if (item.productId === action.productId) {
                   if (action.quantity > 0 && action.quantity < 1000) {
-                    item.quantity = action.quantity;
+                    return Object.assign({}, item, {
+                      quantity: action.quantity,
+                    });
                   }
                 }
 

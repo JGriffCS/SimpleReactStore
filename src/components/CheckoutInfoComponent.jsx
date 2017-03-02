@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { LocalForm, Control, actions } from 'react-redux-form';
 
 import AddressInfo from './AddressInfoComponent';
@@ -35,10 +36,11 @@ const defaultFormValues = {
     },
 };
 
-class CheckoutInfo extends React.Component {
+export class CheckoutInfo extends React.Component {
   constructor(props, context) {
     super(props, context);
 
+    this.toggleBillingAddress = this.toggleBillingAddress.bind(this);
     this.state = {
       useBillingAddress: false,
     };
@@ -67,7 +69,7 @@ class CheckoutInfo extends React.Component {
         </div>
         <div className="section">
           <div className="section-header">Payment Information</div>
-          <PaymentInfo model=".paymentInfo" billingToggleFn={this.toggleBillingAddress.bind(this)} />
+          <PaymentInfo model=".paymentInfo" billingToggleFn={this.toggleBillingAddress} />
         </div>
         {this.state.useBillingAddress === true ? (
           <div className="section">
@@ -83,4 +85,4 @@ class CheckoutInfo extends React.Component {
   }
 }
 
-export default CheckoutInfo;
+export default connect(null, null, null, { withRef: true })(CheckoutInfo);

@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Control, Fieldset, Errors } from 'react-redux-form';
 
 const required = (val) => val && val.length;
@@ -61,4 +62,4 @@ class AddressInfo extends React.Component {
   }
 }
 
-export default AddressInfo;
+export default connect(null)(AddressInfo);

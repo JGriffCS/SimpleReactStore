@@ -6,6 +6,15 @@ import { incrementQuantity, decrementQuantity, updateQuantity, removeProductFrom
 import Quantity from './QuantityComponent';
 
 class CartItem extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+
+    this.incrementQuantity = this.incrementQuantity.bind(this);
+    this.decrementQuantity = this.decrementQuantity.bind(this);
+    this.updateQuantity = this.updateQuantity.bind(this);
+    this.removeItem = this.removeItem.bind(this);
+  }
+
   incrementQuantity() {
     this.props.incrementQuantity(this.props.product.productId);
   }
@@ -23,6 +32,7 @@ class CartItem extends React.Component {
   }
 
   render() {
+    console.log('renderinggggg');
     const { product } = this.props;
 
     return(
@@ -36,12 +46,12 @@ class CartItem extends React.Component {
           </div>
           {this.props.readonly !== 'true' ? (
             <div className="item-remove">
-              <i className="fa fa-trash pull-right" aria-hidden="true" onClick={this.removeItem.bind(this)}></i>
+              <i className="fa fa-trash pull-right" aria-hidden="true" onClick={this.removeItem}></i>
             </div>
           ) : ''}
           <div className="item-quantity">
             {this.props.readonly !== 'true' ? (
-              <Quantity incrementFn={this.incrementQuantity.bind(this)} decrementFn={this.decrementQuantity.bind(this)} updateFn={this.updateQuantity.bind(this)} quantity={product.quantity} />
+              <Quantity incrementFn={this.incrementQuantity} decrementFn={this.decrementQuantity} updateFn={this.updateQuantity} quantity={product.quantity} />
             ) : <div className="readonly">Quantity : {product.quantity}</div>}
           </div>
           <div className="item-price">
@@ -53,10 +63,4 @@ class CartItem extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    cart: state.cart,
-  };
-}
-
-export default connect(mapStateToProps, dispatch => bindActionCreators({ incrementQuantity, decrementQuantity, updateQuantity, removeProductFromCart }, dispatch))(CartItem);
+export default connect(null, dispatch => bindActionCreators({ incrementQuantity, decrementQuantity, updateQuantity, removeProductFromCart }, dispatch))(CartItem);

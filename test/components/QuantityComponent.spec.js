@@ -1,16 +1,22 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import { shallow, mount } from 'enzyme';
+import configureStore from 'redux-mock-store';
 import sinon from 'sinon';
 
 import QuantityComponent from '../../src/components/QuantityComponent';
 
 describe('Quantity Component', function() {
+  const mockStore = configureStore();
+
   it('simulates increment and decrement callbacks on click event', () => {
     const decrementQuantity = sinon.spy();
     const incrementQuantity = sinon.spy();
 
-    const qtyComponent = shallow(
-      <QuantityComponent decrementFn={decrementQuantity} incrementFn={incrementQuantity} />
+    const qtyComponent = mount(
+      <Provider store={mockStore()}>
+        <QuantityComponent decrementFn={decrementQuantity} incrementFn={incrementQuantity} />
+      </Provider>
     );
 
     qtyComponent.find('.decrementBtn').simulate('click');
@@ -24,7 +30,9 @@ describe('Quantity Component', function() {
     const updateQuantity = sinon.spy();
 
     const qtyComponent = mount(
-      <QuantityComponent updateFn={updateQuantity} />
+      <Provider store={mockStore()}>
+        <QuantityComponent updateFn={updateQuantity} />
+      </Provider>
     );
 
     qtyComponent.find('.quantityInput').node.value = 4;

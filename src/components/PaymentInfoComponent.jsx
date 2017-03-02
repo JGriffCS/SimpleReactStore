@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Control, Fieldset, Errors } from 'react-redux-form';
 
 const required = (val) => val && val.length;
@@ -62,4 +63,4 @@ class PaymentInfo extends React.Component {
   }
 }
 
-export default PaymentInfo;
+export default connect(null)(PaymentInfo);

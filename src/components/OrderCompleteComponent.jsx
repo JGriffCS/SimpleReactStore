@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import BackButton from '../components/BackButtonComponent';
 
 class OrderComplete extends React.Component {
@@ -22,4 +23,4 @@ class OrderComplete extends React.Component {
   }
 }
 
-export default OrderComplete;
+export default connect(null)(OrderComplete);

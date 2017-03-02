@@ -1,8 +1,10 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import { shallow, mount } from 'enzyme';
+import configureStore from 'redux-mock-store';
 import sinon from 'sinon';
 
-import CheckoutInfo from '../../src/components/CheckoutInfoComponent';
+import { CheckoutInfo } from '../../src/components/CheckoutInfoComponent';
 
 const initialFormValues = {
     shippingAddress: {
@@ -36,10 +38,11 @@ const initialFormValues = {
 };
 
 // TODO: Known warning with react-redux-form unknown prop: https://github.com/davidkpiano/react-redux-form/issues/623
-describe('Checkout Info Component', function() {
+describe('Checkout Info Component (unwrapped)', function() {
   let submitCallback = null;
   let submitFailureCallback = null;
   let toggleBillingAddressCallback = null;
+  const mockStore = configureStore();
 
   beforeEach(() => {
     submitCallback = sinon.spy(CheckoutInfo.prototype, 'handleSubmit');
@@ -52,21 +55,33 @@ describe('Checkout Info Component', function() {
   });
 
   it('should call the submission failure callback when required fields are not present', () => {
-    const wrapper = mount(<CheckoutInfo />);
+    const wrapper = mount(
+      <Provider store={mockStore()}>
+        <CheckoutInfo />
+      </Provider>
+    );
 
     wrapper.find('[type="submit"]').get(0).click();
     expect(submitFailureCallback.calledOnce).toEqual(true);
   });
 
   it('should call the submission callback when required fields are present', () => {
-    const wrapper = mount(<CheckoutInfo initialValues={initialFormValues} />);
+    const wrapper = mount(
+      <Provider store={mockStore()}>
+        <CheckoutInfo initialValues={initialFormValues} />
+      </Provider>
+    );
 
     wrapper.find('[type="submit"]').get(0).click();
     expect(submitCallback.calledOnce).toEqual(true);
   });
 
   it('should fail to submit if useBillingAddress is true and required billing address fields are missing', () => {
-    const wrapper = mount(<CheckoutInfo initialValues={initialFormValues} />);
+    const wrapper = mount(
+      <Provider store={mockStore()}>
+        <CheckoutInfo initialValues={initialFormValues} />
+      </Provider>
+    );
 
     wrapper.find('.billing-address-toggle').simulate('click');
     wrapper.find('[type="submit"]').get(0).click();
@@ -87,7 +102,11 @@ describe('Checkout Info Component', function() {
         phone: '9125470651',
       },
     })
-    const wrapper = mount(<CheckoutInfo initialValues={initialValues} />);
+    const wrapper = mount(
+      <Provider store={mockStore()}>
+        <CheckoutInfo initialValues={initialValues} />
+      </Provider>
+    );
 
     wrapper.find('.billing-address-toggle').simulate('click');
     wrapper.find('[type="submit"]').get(0).click();

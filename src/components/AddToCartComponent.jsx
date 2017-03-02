@@ -9,6 +9,11 @@ class AddToCart extends React.Component {
   constructor(props, context) {
     super(props, context);
 
+    this.incrementQuantity = this.incrementQuantity.bind(this);
+    this.decrementQuanity = this.decrementQuantity.bind(this);
+    this.updateQuantity = this.updateQuantity.bind(this);
+    this.addItemToCart = this.addItemToCart.bind(this);
+
     this.state = {
       quantity: 1,
     };
@@ -52,8 +57,8 @@ class AddToCart extends React.Component {
   render() {
     return (
       <div className="add-to-cart">
-        <Quantity incrementFn={this.incrementQuantity.bind(this)} decrementFn={this.decrementQuantity.bind(this)} updateFn={this.updateQuantity.bind(this)} quantity={this.state.quantity} />
-        <button onClick={this.addItemToCart.bind(this)}>Add to Cart</button>
+        <Quantity incrementFn={this.incrementQuantity} decrementFn={this.decrementQuantity} updateFn={this.updateQuantity} quantity={this.state.quantity} />
+        <button onClick={this.addItemToCart}>Add to Cart</button>
       </div>
     );
   }
