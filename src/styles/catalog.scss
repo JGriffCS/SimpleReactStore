@@ -4,13 +4,10 @@
 
   .catalog-item-container {
     cursor: pointer;
-    text-align: left;
     margin-bottom: 30px;
 
     .image-container {
-      background-color: #fff;
       width: 250px;
-      height: 250px;
       margin: auto;
 
       img:hover {
@@ -21,16 +18,11 @@
     .product-label {
       font-size: 15px;
       width: 250px;
-      height: 35px;
       line-height: 35px;
       background-color: white;
       padding: 0 10px 0 10px;
       font-weight: bold;
       margin: auto;
-
-      span {
-        display: inline-block;
-      }
 
       .price {
         padding-left: 15px;
@@ -38,28 +30,4 @@
       }
     }
   }
-}
-
-.catalog-container::-webkit-scrollbar {
-  width: 14px;
-  height: 18px;
-}
-
-.catalog-container::-webkit-scrollbar-thumb {
-  height: 6px;
-  border: 4px solid rgba(0, 0, 0, 0);
-  background-clip: padding-box;
-  -webkit-border-radius: 7px;
-  background-color: rgba(0, 0, 0, 0.15);
-  -webkit-box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05), inset 1px 1px 0px rgba(0, 0, 0, 0.05);
-}
-
-.catalog-container::-webkit-scrollbar-button {
-  width: 0;
-  height: 0;
-  display: none;
-}
-
-.catalog-container::-webkit-scrollbar-corner {
-  background-color: transparent;
 }
