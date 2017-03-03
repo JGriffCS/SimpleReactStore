@@ -1,18 +1,11 @@
 .product-detail-container {
   height: calc(100% - 125px);
   overflow-y: auto;
-  padding-bottom: 10px;
 
   .details {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    -webkit-flex-wrap: wrap;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
 
     > div {
       width: 50%;
@@ -28,10 +21,6 @@
 
   .product-info {
     padding: 70px;
-    box-sizing: border-box;
-    text-align: center;
-    background-color: #fff;
-    border-radius: 15px;
     box-shadow: 5px 5px 5px 0px #888;
 
     h1 {

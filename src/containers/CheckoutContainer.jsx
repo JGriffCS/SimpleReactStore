@@ -81,7 +81,7 @@ export class Checkout extends React.Component {
       <div className="container checkout-container">
         <BackButton />
         <div className="checkout-details">
-          <div className="cart-overview">
+          <div className="cart-overview fieldset col-xs-4">
             <div className="section-header text-center">{this.state.purchaseComplete ? 'Your Order' : 'Your Cart'}</div>
             <div className="cart-content">
               {cartItems}
@@ -90,8 +90,7 @@ export class Checkout extends React.Component {
               <span className="pull-right total-price"><strong>Total: ${this.getSubtotal().toFixed(2)}</strong></span>
             </div>
           </div>
-          <div className="checkout-spacer"></div>
-          <div className="customer-info">
+          <div className="customer-info fieldset col-xs-offset-1 col-xs-7">
             {thing}
           </div>
         </div>

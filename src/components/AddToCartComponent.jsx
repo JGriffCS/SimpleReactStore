@@ -56,7 +56,7 @@ class AddToCart extends React.Component {
     };
 
     this.props.addProductToCart(cartItem);
-    this.props.notifSend({ message: `${this.state.quantity} item(s) added to the cart`, kind: 'success', dismissAfter: 3500, });
+    this.props.notifSend({ message: `${this.state.quantity} item(s) added to the cart`, kind: 'success', dismissAfter: 2500, });
     hashHistory.push('/catalog');
   }
 

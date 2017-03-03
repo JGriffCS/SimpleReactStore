@@ -13,7 +13,7 @@ class ProductDetail extends React.Component {
           <div>
             <img src={this.props.product.imageUrl} />
           </div>
-          <div className="product-info">
+          <div className="product-info fieldset text-center">
             <div>
               <h1>{this.props.product.name}</h1>
             </div>

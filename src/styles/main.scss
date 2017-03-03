@@ -27,6 +27,7 @@ body {
   background-color: #c6c2be;
   z-index: -1;
   overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .container {
@@ -55,6 +56,19 @@ body {
  -webkit-user-select: none;
  -ms-user-select: none;
  user-select: none;
+}
+
+.fieldset {
+  background-color: #FFF;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+hr {
+  height: 5px;
+  box-shadow: inset 0 5px 5px -5px rgba(0, 0, 0, 0.5);
+  margin-top: 0px;
+  margin-bottom: 10px;
 }
 
 /* Custom styles for redux-notifications toaster */
