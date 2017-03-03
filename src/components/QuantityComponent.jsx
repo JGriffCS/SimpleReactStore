@@ -27,9 +27,9 @@ class Quantity extends React.Component {
 
     return(
       <div className="cart-quantity-container">
-        <button className="btn-primary quantity-btn decrementBtn" onClick={this.decrement}><i className="fa fa-minus" aria-hidden="true"></i></button>
+        <button className="quantity-btn decrementBtn" onClick={this.decrement}><i className="fa fa-minus" aria-hidden="true"></i></button>
         <input className="form-control quantityInput" ref={(el) => { this._quantity = el }} value={quantity} onChange={this.updateQuantity} />
-        <button className="btn-primary quantity-btn incrementBtn" onClick={this.increment}><i className="fa fa-plus" aria-hidden="true"></i></button>
+        <button className="quantity-btn incrementBtn" onClick={this.increment}><i className="fa fa-plus" aria-hidden="true"></i></button>
       </div>
     )
   }

@@ -26,7 +26,7 @@ class Cart extends React.Component {
 
     if (cart.items.length === 0) {
       return (
-        <div className="empty-cart">
+        <div className="empty-cart text-center">
           <strong>Your cart is empty!</strong>
           <div>Why not find something you like?</div>
         </div>
