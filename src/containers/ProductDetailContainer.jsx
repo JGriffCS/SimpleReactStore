@@ -1,5 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { createSelector } from 'reselect';
+import { bindActionCreators } from 'redux';
+import { addProductToCart } from '../actions/cart';
+
+import { actions as notifActions } from 'redux-notifications';
+const { notifSend } = notifActions;
 
 import AddToCart from '../components/AddToCartComponent';
 import BackButton from '../components/BackButtonComponent';
@@ -22,7 +28,7 @@ class ProductDetail extends React.Component {
               <p><strong>${this.props.product.price.toFixed(2)}</strong></p>
             </div>
             <div>
-              <AddToCart {...this.props} />
+              <AddToCart product={this.props.product} addItemFn={this.props.addProductToCart} notifyFn={this.props.notifSend} />
             </div>
           </div>
         </div>
@@ -31,12 +37,12 @@ class ProductDetail extends React.Component {
   }
 }
 
-function mapStateToProps(state, ownProps) {
-  return {
-    product: state.products.find((product) => {
-      return product.id === parseInt(ownProps.params.productId, 10);
-    }),
-  };
-}
+const mapStateToProps = createSelector(
+  state => state.products,
+  (state, props) => props.params.productId,
+  (products, id) => {
+    return { product: products.find(product => product.id === parseInt(id, 10)), };
+  }
+)
 
-export default connect(mapStateToProps)(ProductDetail);
+export default connect(mapStateToProps, dispatch => bindActionCreators({ addProductToCart, notifSend }, dispatch))(ProductDetail);

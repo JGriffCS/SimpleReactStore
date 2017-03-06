@@ -1,24 +1,23 @@
 import React from 'react';
-import { Provider } from 'react-redux';
 import { LocalForm, actions } from 'react-redux-form';
-import configureStore from 'redux-mock-store';
 import { mount } from 'enzyme';
 import sinon from 'sinon';
 
-import AddressInfo from '../../src/components/AddressInfoComponent';
+import { AddressInfo } from '../../src/components/AddressInfoComponent';
 
 describe('Payment Info Component', function() {
-  const mockStore = configureStore();
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = mount(
+      <LocalForm model="testForm">
+        <AddressInfo model=".addressForm" />
+        <button type="submit"></button>
+      </LocalForm>
+    );
+  });
 
   it('should display an error message when the first name field is touched, but left blank', () => {
-    const wrapper = mount(
-      <Provider store={mockStore()}>
-        <LocalForm model="testForm">
-          <AddressInfo model=".addressInfo" />
-        </LocalForm>
-      </Provider>
-    );
-
     expect(wrapper.find('.first-name-error').exists()).toEqual(false);
 
     wrapper.find('.first-name').simulate('focus');
@@ -28,14 +27,6 @@ describe('Payment Info Component', function() {
   });
 
   it('should display an error message when the last name field is touched, but left blank', () => {
-    const wrapper = mount(
-      <Provider store={mockStore()}>
-        <LocalForm model="testForm">
-          <AddressInfo model=".addressInfo" />
-        </LocalForm>
-      </Provider>
-    );
-
     expect(wrapper.find('.last-name-error').exists()).toEqual(false);
 
     wrapper.find('.last-name').simulate('focus');
@@ -45,14 +36,6 @@ describe('Payment Info Component', function() {
   });
 
   it('should display an error message when the first address field is touched, but left blank', () => {
-    const wrapper = mount(
-      <Provider store={mockStore()}>
-        <LocalForm model="testForm">
-          <AddressInfo model=".addressInfo" />
-        </LocalForm>
-      </Provider>
-    );
-
     expect(wrapper.find('.address-error').exists()).toEqual(false);
 
     wrapper.find('.address').simulate('focus');
@@ -62,14 +45,6 @@ describe('Payment Info Component', function() {
   });
 
   it('should display an error message when the city field is touched, but left blank', () => {
-    const wrapper = mount(
-      <Provider store={mockStore()}>
-        <LocalForm model="testForm">
-          <AddressInfo model=".addressInfo" />
-        </LocalForm>
-      </Provider>
-    );
-
     expect(wrapper.find('.city-error').exists()).toEqual(false);
 
     wrapper.find('.city').simulate('focus');
@@ -79,14 +54,6 @@ describe('Payment Info Component', function() {
   });
 
   it('should display an error message when the state field is touched, but left blank', () => {
-    const wrapper = mount(
-      <Provider store={mockStore()}>
-        <LocalForm model="testForm">
-          <AddressInfo model=".addressInfo" />
-        </LocalForm>
-      </Provider>
-    );
-
     expect(wrapper.find('.state-error').exists()).toEqual(false);
 
     wrapper.find('.state').simulate('focus');
@@ -96,14 +63,6 @@ describe('Payment Info Component', function() {
   });
 
   it('should display an error message when the zip field is touched, but left blank', () => {
-    const wrapper = mount(
-      <Provider store={mockStore()}>
-        <LocalForm model="testForm">
-          <AddressInfo model=".addressInfo" />
-        </LocalForm>
-      </Provider>
-    );
-
     expect(wrapper.find('.zip-error').exists()).toEqual(false);
 
     wrapper.find('.zip').simulate('focus');
@@ -113,14 +72,6 @@ describe('Payment Info Component', function() {
   });
 
   it('should display an error message when an invalid zip is entered', () => {
-    const wrapper = mount(
-      <Provider store={mockStore()}>
-        <LocalForm model="testForm">
-          <AddressInfo model=".addressInfo" />
-        </LocalForm>
-      </Provider>
-    );
-
     expect(wrapper.find('.zip-error').exists()).toEqual(false);
 
     wrapper.find('.zip').simulate('change', { target: { value: 'abc', }, });
@@ -135,14 +86,6 @@ describe('Payment Info Component', function() {
   });
 
   it('should not display an error when any valid zip code format is entered', () => {
-    const wrapper = mount(
-      <Provider store={mockStore()}>
-        <LocalForm model="testForm">
-          <AddressInfo model=".addressInfo" />
-        </LocalForm>
-      </Provider>
-    );
-
     expect(wrapper.find('.zip-error').exists()).toEqual(false);
 
     wrapper.find('.zip').simulate('change', { target: { value: '12345', }, });
@@ -157,14 +100,6 @@ describe('Payment Info Component', function() {
   });
 
   it('should display an error message when the country field is touched, but left blank', () => {
-    const wrapper = mount(
-      <Provider store={mockStore()}>
-        <LocalForm model="testForm">
-          <AddressInfo model=".addressInfo" />
-        </LocalForm>
-      </Provider>
-    );
-
     expect(wrapper.find('.country-error').exists()).toEqual(false);
 
     wrapper.find('.country').simulate('focus');
@@ -174,14 +109,6 @@ describe('Payment Info Component', function() {
   });
 
   it('should display an error message when the phone field is touched, but left blank', () => {
-    const wrapper = mount(
-      <Provider store={mockStore()}>
-        <LocalForm model="testForm">
-          <AddressInfo model=".addressInfo" />
-        </LocalForm>
-      </Provider>
-    );
-
     expect(wrapper.find('.phone-error').exists()).toEqual(false);
 
     wrapper.find('.phone').simulate('focus');
@@ -191,14 +118,6 @@ describe('Payment Info Component', function() {
   });
 
   it('should display an error message when an invalid phone number is entered', () => {
-    const wrapper = mount(
-      <Provider store={mockStore()}>
-        <LocalForm model="testForm">
-          <AddressInfo model=".addressInfo" />
-        </LocalForm>
-      </Provider>
-    );
-
     expect(wrapper.find('.phone-error').exists()).toEqual(false);
 
     wrapper.find('.phone').simulate('change', { target: { value: 'abc', }, });
@@ -213,14 +132,6 @@ describe('Payment Info Component', function() {
   });
 
   it('should not display an error when any valid phone number format is entered', () => {
-    const wrapper = mount(
-      <Provider store={mockStore()}>
-        <LocalForm model="testForm">
-          <AddressInfo model=".addressInfo" />
-        </LocalForm>
-      </Provider>
-    );
-
     expect(wrapper.find('.phone-error').exists()).toEqual(false);
 
     wrapper.find('.phone').simulate('change', { target: { value: '9998675309', }, });
@@ -250,15 +161,6 @@ describe('Payment Info Component', function() {
   });
 
   it('should display errors for all missing, required fields when the form is submitted', () => {
-    const wrapper = mount(
-      <Provider store={mockStore()}>
-        <LocalForm model="testForm">
-          <AddressInfo model=".addressForm" />
-          <button type="submit"></button>
-        </LocalForm>
-      </Provider>
-    );
-
     expect(wrapper.find('.first-name-error').exists()).toEqual(false);
     expect(wrapper.find('.last-name-error').exists()).toEqual(false);
     expect(wrapper.find('.address-error').exists()).toEqual(false);

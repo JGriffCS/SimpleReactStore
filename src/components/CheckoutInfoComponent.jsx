@@ -85,4 +85,4 @@ export class CheckoutInfo extends React.Component {
   }
 }
 
-export default connect(null, null, null, { withRef: true })(CheckoutInfo);
+export default connect(null)(CheckoutInfo);

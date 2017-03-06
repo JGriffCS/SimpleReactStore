@@ -1,24 +1,23 @@
 import React from 'react';
-import { Provider } from 'react-redux';
 import { LocalForm, actions } from 'react-redux-form';
-import configureStore from 'redux-mock-store';
 import { mount } from 'enzyme';
 import sinon from 'sinon';
 
-import PaymentInfo from '../../src/components/PaymentInfoComponent';
+import { PaymentInfo } from '../../src/components/PaymentInfoComponent';
 
 describe('Payment Info Component', function() {
-  const mockStore = configureStore();
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = mount(
+      <LocalForm model="testForm">
+        <PaymentInfo model=".paymentInfo" />
+        <button type="submit"></button>
+      </LocalForm>
+    );
+  });
 
   it('should display an error message when the card number field is touched, but left blank', () => {
-    const wrapper = mount(
-      <Provider store={mockStore()}>
-        <LocalForm model="testForm">
-          <PaymentInfo model=".paymentInfo" />
-        </LocalForm>
-      </Provider>
-    );
-
     expect(wrapper.find('.card-number-error').exists()).toEqual(false);
 
     wrapper.find('.card-number').simulate('focus');
@@ -28,13 +27,6 @@ describe('Payment Info Component', function() {
   });
 
   it('should display an error message when an invalid card number is entered', () => {
-    const wrapper = mount(
-      <Provider store={mockStore()}>
-        <LocalForm model="testForm">
-          <PaymentInfo model=".paymentInfo" />
-        </LocalForm>
-      </Provider>
-    );
     const cardNumberInput = wrapper.find('.card-number');
 
     expect(wrapper.find('.card-number-error').exists()).toEqual(false);
@@ -56,14 +48,6 @@ describe('Payment Info Component', function() {
   });
 
   it('should display an error message when the cardholder name field is touched, but left blank', () => {
-    const wrapper = mount(
-      <Provider store={mockStore()}>
-        <LocalForm model="testForm">
-          <PaymentInfo model=".paymentInfo" />
-        </LocalForm>
-      </Provider>
-    );
-
     expect(wrapper.find('.cardholder-name-error').exists()).toEqual(false);
 
     wrapper.find('.cardholder-name').simulate('focus');
@@ -73,14 +57,6 @@ describe('Payment Info Component', function() {
   });
 
   it('should display an error message when the card expiration month select is touched, but left blank', () => {
-    const wrapper = mount(
-      <Provider store={mockStore()}>
-        <LocalForm model="testForm">
-          <PaymentInfo model=".paymentInfo" />
-        </LocalForm>
-      </Provider>
-    );
-
     expect(wrapper.find('.card-expiration-month-error').exists()).toEqual(false);
 
     wrapper.find('.card-expiration-month').simulate('focus');
@@ -90,14 +66,6 @@ describe('Payment Info Component', function() {
   });
 
   it('should display an error message when the card expiration year select is touched, but left blank', () => {
-    const wrapper = mount(
-      <Provider store={mockStore()}>
-        <LocalForm model="testForm">
-          <PaymentInfo model=".paymentInfo" />
-        </LocalForm>
-      </Provider>
-    );
-
     expect(wrapper.find('.card-expiration-year-error').exists()).toEqual(false);
 
     wrapper.find('.card-expiration-year').simulate('focus');
@@ -107,15 +75,6 @@ describe('Payment Info Component', function() {
   });
 
   it('should display errors for all missing, required fields when the form is submitted', () => {
-    const wrapper = mount(
-      <Provider store={mockStore()}>
-        <LocalForm model="testForm">
-          <PaymentInfo model=".paymentInfo" />
-          <button type="submit"></button>
-        </LocalForm>
-      </Provider>
-    );
-
     expect(wrapper.find('.card-number-error').exists()).toEqual(false);
     expect(wrapper.find('.cardholder-name-error').exists()).toEqual(false);
     expect(wrapper.find('.card-expiration-month-error').exists()).toEqual(false);

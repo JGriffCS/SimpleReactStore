@@ -1,15 +1,10 @@
 import React from 'react';
 import { hashHistory } from 'react-router';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { addProductToCart } from '../actions/cart';
-
-import { actions as notifActions } from 'redux-notifications';
-const { notifSend } = notifActions;
 
 import Quantity from './QuantityComponent';
 
-class AddToCart extends React.Component {
+export class AddToCart extends React.Component {
   constructor(props, context) {
     super(props, context);
 
@@ -55,8 +50,8 @@ class AddToCart extends React.Component {
       quantity: this.state.quantity,
     };
 
-    this.props.addProductToCart(cartItem);
-    this.props.notifSend({ message: `${this.state.quantity} item(s) added to the cart`, kind: 'success', dismissAfter: 2500, });
+    this.props.addItemFn(cartItem);
+    this.props.notifyFn({ message: `${this.state.quantity} item(s) added to the cart`, kind: 'success', dismissAfter: 2500, });
     hashHistory.push('/catalog');
   }
 
@@ -70,4 +65,4 @@ class AddToCart extends React.Component {
   }
 }
 
-export default connect(null, dispatch => bindActionCreators({ addProductToCart, notifSend }, dispatch))(AddToCart);
+export default connect(null)(AddToCart);

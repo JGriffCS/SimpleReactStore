@@ -6,7 +6,7 @@ const required = (val) => val && val.length;
 // Only validate specific tyypes  once the box is no longer empty
 const cardNumber = (val) => !val || /^[0-9]{16}?$/.test(val);
 
-class PaymentInfo extends React.Component {
+export class PaymentInfo extends React.Component {
   render() {
     return (
       <div className="row">

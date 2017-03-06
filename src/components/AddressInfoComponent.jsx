@@ -7,7 +7,7 @@ const required = (val) => val && val.length;
 const phone = (val) => !val || /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/.test(val);
 const zip = (val) => !val || /^[0-9]{5}(?:-[0-9]{4})?$/.test(val);
 
-class AddressInfo extends React.Component {
+export class AddressInfo extends React.Component {
   render() {
     return (
       <div className="row">
