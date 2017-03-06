@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createSelector } from 'reselect';
 import { bindActionCreators } from 'redux';
 import { addProductToCart } from '../actions/cart';
 
@@ -9,6 +8,8 @@ const { notifSend } = notifActions;
 
 import AddToCart from '../components/AddToCartComponent';
 import BackButton from '../components/BackButtonComponent';
+
+import { ProductSelector as mapStateToProps } from '../selectors/product.js';
 
 class ProductDetail extends React.Component {
   render() {
@@ -36,13 +37,5 @@ class ProductDetail extends React.Component {
     );
   }
 }
-
-const mapStateToProps = createSelector(
-  state => state.products,
-  (state, props) => props.params.productId,
-  (products, id) => {
-    return { product: products.find(product => product.id === parseInt(id, 10)), };
-  }
-)
 
 export default connect(mapStateToProps, dispatch => bindActionCreators({ addProductToCart, notifSend }, dispatch))(ProductDetail);

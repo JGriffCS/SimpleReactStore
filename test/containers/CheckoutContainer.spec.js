@@ -5,8 +5,6 @@ import configureStore from 'redux-mock-store';
 import sinon from 'sinon';
 
 import Checkout from '../../src/containers/CheckoutContainer';
-import { emptyCart } from '../../src/actions/cart';
-import { createNewOrder } from '../../src/actions/orders';
 
 describe('Checkout Container', function() {
   const mockStore = configureStore();
