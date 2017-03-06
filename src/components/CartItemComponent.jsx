@@ -32,7 +32,6 @@ class CartItem extends React.Component {
   }
 
   render() {
-    console.log('renderinggggg');
     const { product } = this.props;
 
     return(

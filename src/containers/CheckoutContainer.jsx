@@ -58,6 +58,13 @@ export class Checkout extends React.Component {
   }
 
   getSubtotal() {
+    if (this.state.purchaseComplete === true && this.props.orders.length > 0) {
+      const { orders } = this.props;
+      const currentOrderIdx = orders.findIndex((order) => parseInt(this.props.location.query.orderId, 10) === order.orderId);
+
+      return orders[currentOrderIdx].items.reduce((sum, item) => sum + (item.quantity * item.price), 0);
+    }
+    
     return this.props.cart.items.reduce((sum, item) => sum + (item.quantity * item.price), 0);
   }
 
